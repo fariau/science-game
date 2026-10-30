@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Fox Science Club v12</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #27325a;
+            --c1: #8ec5ff;
+            --c2: #ffd6f0;
+            --ac: #ff7a45;
+            color-scheme: light;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            font-size: max(12px, min(2.4vh, 4vw));
+            -webkit-text-size-adjust: 100%;
+            height: 100%;
+            scroll-padding-top: env(safe-area-inset-top, 0px)
+        }
+
+        body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            color: var(--ink);
+            font-family: "Baloo 2", "Trebuchet MS", "Comic Sans MS", sans-serif;
+            font-weight: 600;
+            user-select: none;
+            -webkit-user-select: none
+        }
+
+        .t-menu {
+            --c1: #8ec5ff;
+            --c2: #ffd6f0;
+            --ac: #ff7a45
+        }
+
+        .t-hab {
+            --c1: #fff3b0;
+            --c2: #c9f0ff;
+            --ac: #2fb36b
+        }
+
+        .t-snd {
+            --c1: #ffd18a;
+            --c2: #ffb3c7;
+            --ac: #ff8c42
+        }
+
+        .t-tmp {
+            --c1: #ffe0c2;
+            --c2: #cfe9ff;
+            --ac: #3b9cf0
+        }
+
+        #bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(160deg, var(--c1), var(--c2))
+        }
+
+        #bg::before,
+        #bg::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .35)
+        }
+
+        #bg::before {
+            width: 40vmax;
+            height: 40vmax;
+            left: -12vmax;
+            top: -12vmax
+        }
+
+        #bg::after {
+            width: 34vmax;
+            height: 34vmax;
+            right: -10vmax;
+            bottom: -10vmax
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root:not([data-theme="light"]) #bg {
+                filter: brightness(.62)
+            }
+        }
+
+        :root[data-theme="dark"] #bg {
+            filter: brightness(.62)
+        }
+
+        #app {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 60rem);
+            height: 100%;
+            margin: 0 auto;
+            padding: .8rem;
+            display: flex;
+            flex-direction: column;
+            gap: .8rem
+        }
+
+        button {
+            font: inherit;
+            color: inherit;
+            border: 0;
+            cursor: pointer;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            background: #fff;
+            border-radius: 1.4rem;
+            box-shadow: 0 .25rem 0 rgba(39, 50, 90, .2);
+            transition: transform .1s
+        }
+
+        button:active {
+            transform: translateY(.2rem)
+        }
+
+        button:focus-visible {
+            outline: .25rem solid var(--ac);
+            outline-offset: .15rem
+        }
+
+        .top {
+            flex: none;
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            background: #fff;
+            border-radius: 1.8rem;
+            padding: .5rem .9rem;
+            box-shadow: 0 .3rem 0 rgba(0, 0, 0, .12)
+        }
+
+        .fox {
+            position: relative;
+            flex: none;
+            width: 3.4rem;
+            height: 3.4rem;
+            border-radius: 50%;
+            background: #ffe9a8;
+            display: grid;
+            place-items: center;
+            font-size: 2.3rem
+        }
+
+        #acc {
+            position: absolute;
+            top: -.6rem;
+            left: 50%;
+            transform: translateX(-50%) rotate(-10deg);
+            font-size: 1.4rem
+        }
+
+        .fox.hop,
+        .zone.good .zan {
+            animation: hop .5s
+        }
+
+        @keyframes hop {
+            40% {
+                transform: translateY(-.6rem) rotate(-8deg)
+            }
+
+            70% {
+                transform: rotate(6deg)
+            }
+        }
+
+        .say {
+            flex: 1;
+            min-width: 0;
+            background: #fff3c4;
+            border-radius: 1.2rem;
+            padding: .35rem .8rem;
+            font-size: 1.1rem;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap
+        }
+
+        .stars {
+            flex: none;
+            font-size: 1.7rem;
+            font-weight: 800
+        }
+
+        .hbtn {
+            flex: none;
+            width: 2.8rem;
+            height: 2.8rem;
+            padding: 0;
+            font-size: 1.4rem
+        }
+
+        #view {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            gap: .8rem
+        }
+
+        .ttl {
+            flex: none;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 800;
+            text-shadow: 0 .1rem 0 rgba(255, 255, 255, .7)
+        }
+
+        .tiles {
+            flex: 1;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            gap: .8rem
+        }
+
+        .tile {
+            background: var(--c);
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1.2rem;
+            border-radius: 2rem;
+            padding: .4rem 1.6rem;
+            box-shadow: 0 .35rem 0 rgba(0, 0, 0, .2);
+            min-height: 0;
+            text-align: left
+        }
+
+        .te {
+            font-size: min(4.8rem, 10vh);
+            line-height: 1
+        }
+
+        .tx {
+            display: flex;
+            flex-direction: column
+        }
+
+        .tt {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1.1
+        }
+
+        .ts {
+            font-size: 1.05rem;
+            opacity: .92
+        }
+
+        .book {
+            flex: none;
+            background: #fff;
+            border-radius: 1.6rem;
+            padding: .4rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            font-size: 1.3rem;
+            overflow: hidden;
+            white-space: nowrap
+        }
+
+        .book b {
+            font-size: 1rem
+        }
+
+        .askrow {
+            flex: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #fff;
+            border-radius: 2rem;
+            padding: .6rem 1rem;
+            box-shadow: 0 .35rem 0 rgba(0, 0, 0, .15)
+        }
+
+        .piece {
+            position: relative;
+            z-index: 30;
+            flex: none;
+            width: min(6.5rem, 13vh);
+            height: min(6.5rem, 13vh);
+            border-radius: 50%;
+            background: #fff3c4;
+            border: .2rem dashed var(--ac);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: grab;
+            touch-action: none;
+            box-shadow: 0 .3rem 0 rgba(0, 0, 0, .18)
+        }
+
+        .piece .pe {
+            font-size: min(4rem, 8.2vh);
+            line-height: 1
+        }
+
+        .piece small {
+            font-size: min(1.1rem, 2.4vh);
+            font-weight: 800;
+            line-height: 1
+        }
+
+        .piece.drag {
+            cursor: grabbing;
+            box-shadow: 0 .8rem 1.2rem rgba(0, 0, 0, .3)
+        }
+
+        .piece.ret,
+        .piece.snap {
+            transition: transform .3s
+        }
+
+        .qt {
+            flex: 1;
+            min-width: 0;
+            text-align: left
+        }
+
+        .pd i {
+            font-style: normal;
+            font-size: 1.2rem;
+            opacity: .25
+        }
+
+        .pd i.on {
+            opacity: 1
+        }
+
+        .ask {
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1.15
+        }
+
+        .hint {
+            font-size: .95rem;
+            opacity: .65
+        }
+
+        .mini {
+            flex: none;
+            height: 2.8rem;
+            padding: .1rem 1rem;
+            font-size: 1.2rem
+        }
+
+        .zones {
+            flex: 1;
+            min-height: 0;
+            display: grid;
+            gap: .7rem
+        }
+
+        .zones.rows {
+            grid-template-rows: repeat(var(--n), 1fr)
+        }
+
+        .zones.cols {
+            grid-template-columns: repeat(var(--n), 1fr)
+        }
+
+        .zone {
+            position: relative;
+            min-height: 0;
+            border-radius: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: .2rem;
+            overflow: hidden;
+            box-shadow: 0 .3rem 0 rgba(0, 0, 0, .2);
+            transition: transform .15s
+        }
+
+        .zone.over {
+            transform: scale(1.03);
+            outline: .3rem solid #fff
+        }
+
+        .zone.good {
+            outline: .35rem solid #2fb36b
+        }
+
+        .zone.bad {
+            animation: shake .35s
+        }
+
+        @keyframes shake {
+            25% {
+                transform: translateX(-.5rem)
+            }
+
+            75% {
+                transform: translateX(.5rem)
+            }
+        }
+
+        .zd {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-size: min(3rem, 7vh);
+            opacity: .4;
+            pointer-events: none
+        }
+
+        .zl {
+            position: relative;
+            font-size: min(2rem, 5vh);
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 .12rem 0 rgba(0, 0, 0, .25)
+        }
+
+        .zs {
+            background: linear-gradient(#6ec6ff, #bfe9ff)
+        }
+
+        .zg {
+            background: linear-gradient(#6fd37f, #4fb86a)
+        }
+
+        .zw {
+            background: linear-gradient(#3aaee8, #1c85c9)
+        }
+
+        .zh {
+            background: linear-gradient(#ffa35e, #ff5d5d)
+        }
+
+        .zc {
+            background: linear-gradient(#a6e0ff, #5aa9ff)
+        }
+
+        .za {
+            background: #fff
+        }
+
+        .za:nth-child(1) {
+            background: #ffe3c2
+        }
+
+        .za:nth-child(2) {
+            background: #d6f0ff
+        }
+
+        .za:nth-child(3) {
+            background: #e6dcff
+        }
+
+        .zan {
+            font-size: min(5.5rem, 12vh);
+            line-height: 1
+        }
+
+        .zn {
+            font-size: 1.4rem;
+            font-weight: 800
+        }
+
+        .endbox {
+            flex: 1;
+            min-height: 0;
+            background: #fff;
+            border-radius: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: .4rem;
+            text-align: center;
+            padding: 1rem;
+            box-shadow: 0 .35rem 0 rgba(0, 0, 0, .15)
+        }
+
+        .endbox .t {
+            font-size: min(5rem, 11vh);
+            line-height: 1
+        }
+
+        .s3 {
+            font-size: min(2.8rem, 6vh)
+        }
+
+        .dim {
+            opacity: .25
+        }
+
+        .stk {
+            font-size: min(3.4rem, 8vh);
+            vertical-align: middle
+        }
+
+        .row2 {
+            flex: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .8rem
+        }
+
+        .row2 button {
+            height: min(6rem, 13vh);
+            font-size: 1.4rem;
+            font-weight: 800;
+            border: .2rem solid var(--ac);
+            box-shadow: 0 .3rem 0 var(--ac);
+            border-radius: 1.6rem
+        }
+
+        #fx {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            pointer-events: none;
+            overflow: hidden
+        }
+
+        .conf {
+            position: fixed;
+            font-size: 1.8rem;
+            animation: fly 1s ease-out forwards
+        }
+
+        @keyframes fly {
+            to {
+                transform: translate(var(--x), var(--y)) rotate(var(--r));
+                opacity: 0
+            }
+        }
+
+        @media (max-aspect-ratio:5/4) {
+            .zones.cols.n3 {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(3, 1fr)
+            }
+
+            .zones.cols.n3 .za {
+                flex-direction: row;
+                gap: 1rem
+            }
+        }
+
+        @media (min-aspect-ratio:5/4) {
+            .tiles {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: 1fr
+            }
+
+            .tile {
+                flex-direction: column;
+                justify-content: center;
+                gap: .3rem;
+                padding: .6rem;
+                text-align: center
+            }
+
+            .tx {
+                align-items: center
+            }
+
+            .te {
+                font-size: min(6.5rem, 16vh)
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            .fox.hop,
+            .zone.good .zan,
+            .zone.bad,
+            .conf {
+                animation: none
+            }
+
+            .piece.ret,
+            .piece.snap {
+                transition: none
+            }
+        }
+    </style>
+</head>
+
+<body class="t-menu">
+    <div id="bg"></div>
+    <div id="app">
+        <header class="top">
+            <div class="fox" id="fox" aria-hidden="true">🦊<span id="acc"></span></div>
+            <div class="say" id="say">Hi! Let’s play!</div>
+            <div class="stars">⭐ <span id="n">0</span></div>
+            <button class="hbtn" id="home" aria-label="Menu">🏠</button>
+        </header>
+        <main id="view"></main>
+    </div>
+    <div id="fx" aria-hidden="true"></div>
+    <script>
+        var stars = 0, owned = [], S = null, DK = {}, TK = 0, AC = null;
+        var $ = function (i) {return document.getElementById(i)};
+        function pick(a, n) {return a.slice().sort(function () {return Math.random() - .5}).slice(0, n)}
+        function draw(k, a) {if (!DK[k] || !DK[k].length) DK[k] = pick(a, a.length); return DK[k].pop()}
+        function talk(t, p, r) {try {speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(t); u.lang = "en-US"; u.pitch = p || 1.15; u.rate = r || .9; speechSynthesis.speak(u)} catch (e) { } }
+        var CR = {cat: ["Meeeow! Meow!", 2, .8], dog: ["Woof! Woof!", .7, 1.1], cow: ["Moooooo!", .3, .5], sheep: ["Baaaaa! Baaaa!", 1.8, .6], pig: ["Oink! Oink! Oink!", .4, 1], frog: ["Ribbit! Ribbit!", .5, 1.2], duck: ["Quack! Quack!", 1.7, 1.2], horse: ["Neeeeigh!", 1.4, .7]};
+        function critter(k) {var c = CR[k]; talk(c[0], c[1], c[2])}
+        var FX = {ok: [[660, .1, 0], [880, .12, .1], [1175, .2, .22]], no: [[220, .18, 0], [165, .25, .16]], win: [[523, .12, 0], [659, .12, .12], [784, .12, .24], [1047, .3, .36]]};
+        function fx(k) {try {AC = AC || new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === "suspended") AC.resume(); FX[k].forEach(function (s) {var o = AC.createOscillator(), g = AC.createGain(), t0 = AC.currentTime + s[2]; o.type = k === "no" ? "triangle" : "sine"; o.frequency.value = s[0]; g.gain.setValueAtTime(.0001, t0); g.gain.exponentialRampToValueAtTime(.25, t0 + .02); g.gain.exponentialRampToValueAtTime(.0001, t0 + s[1]); o.connect(g); g.connect(AC.destination); o.start(t0); o.stop(t0 + s[1] + .05)})} catch (e) { } }
+        function burst(el, em) {var r = el.getBoundingClientRect(); for (var i = 0; i < 9; i++) {var s = document.createElement("span"); s.className = "conf"; s.textContent = em[i % em.length]; s.style.left = (r.left + r.width / 2) + "px"; s.style.top = (r.top + r.height / 2) + "px"; s.style.setProperty("--x", (Math.random() * 260 - 130) + "px"); s.style.setProperty("--y", (-40 - Math.random() * 160) + "px"); s.style.setProperty("--r", (Math.random() * 360) + "deg"); $("fx").appendChild(s); setTimeout(function (e) {return function () {e.remove()}}(s), 1000)} }
+        function msg(t) {$("say").textContent = t}
+        function hud() {$("n").textContent = stars; $("acc").textContent = stars >= 25 ? "👑" : stars >= 12 ? "🎩" : stars >= 5 ? "🎀" : ""}
+        function hop() {var f = $("fox"); f.classList.remove("hop"); void f.offsetWidth; f.classList.add("hop")}
+
+        var HAB = [["🐟", "fish", "water"], ["🐬", "dolphin", "water"], ["🐙", "octopus", "water"], ["🐢", "turtle", "water"], ["🐄", "cow", "land"], ["🐘", "elephant", "land"], ["🦁", "lion", "land"], ["🐇", "rabbit", "land"], ["🦅", "eagle", "sky"], ["🦉", "owl", "sky"], ["🦋", "butterfly", "sky"], ["🐝", "bee", "sky"]];
+        var WH = {water: "in water", land: "on land", sky: "in the sky"};
+        var SND = [["🐱", "cat", "Meow"], ["🐶", "dog", "Woof"], ["🐄", "cow", "Moo"], ["🐑", "sheep", "Baa"], ["🐷", "pig", "Oink"], ["🐸", "frog", "Ribbit"], ["🦆", "duck", "Quack"], ["🐴", "horse", "Neigh"]];
+        var TMP = [["☃️", "snowman", "cold"], ["🔥", "fire", "hot"], ["🍦", "ice cream", "cold"], ["☀️", "sun", "hot"], ["🧊", "ice", "cold"], ["☕", "hot tea", "hot"], ["🐧", "penguin", "cold"], ["🌋", "volcano", "hot"]];
+        var STK = ["🦄", "🐉", "🚀", "🌈", "🍭", "🎈", "🦖", "🐳", "🦋", "🐼", "🦁", "🐸", "🐙", "🍉", "🎨", "🛸"];
+        var PR = ["Great job! 🎉", "Super! ⭐", "You’re a star!", "Awesome! 🌟", "Yay! Well done!"];
+        var Z = {sky: {k: "sky", c: "zs", h: '<div class="zd"><span>☁️</span><span>☁️</span><span>☁️</span></div><span class="zl">☁️ Sky</span>'}, land: {k: "land", c: "zg", h: '<div class="zd"><span>🌳</span><span>🌴</span><span>🌳</span></div><span class="zl">🌳 Land</span>'}, water: {k: "water", c: "zw", h: '<div class="zd"><span>🌊</span><span>🌊</span><span>🌊</span></div><span class="zl">🌊 Water</span>'}, hot: {k: "hot", c: "zh", h: '<div class="zd"><span>☀️</span><span>☀️</span></div><span class="zl">🔥 Hot</span>'}, cold: {k: "cold", c: "zc", h: '<div class="zd"><span>❄️</span><span>❄️</span></div><span class="zl">❄️ Cold</span>'}};
+        var G = [
+            {e: "🌍", t: "Where do I live?", s: "Drag the animal home", c: "#2fb36b", th: "t-hab", make: function () {var a = draw("h", HAB); return {piece: '<span class="pe">' + a[0] + '</span>', ask: "Where does the " + a[1] + " live?", ans: a[2], win: "Yes! The " + a[1] + " lives " + WH[a[2]] + "!", lay: "rows", zones: [Z.sky, Z.land, Z.water]}}},
+            {e: "🔊", t: "Who says that?", s: "Drag the sound to the animal", c: "#ff8c42", th: "t-snd", make: function () {var a = draw("s", SND), o = pick([a].concat(pick(SND.filter(function (x) {return x !== a}), 2)), 3); return {piece: '<span class="pe">🔊</span><small>' + a[2] + '!</small>', ask: "Who makes this sound?", hear: a[1], ans: a[1], win: "Yes! The " + a[1] + " says " + a[2] + "!", lay: "cols n3", zones: o.map(function (x) {return {k: x[1], c: "za", h: '<span class="zan">' + x[0] + '</span><span class="zn">' + x[1] + '</span>'}})}}},
+            {e: "🌡️", t: "Hot or cold?", s: "Drag it to hot or cold", c: "#3b9cf0", th: "t-tmp", make: function () {var a = draw("t", TMP); return {piece: '<span class="pe">' + a[0] + '</span>', ask: "Is the " + a[1] + " hot or cold?", ans: a[2], win: "Yes! The " + a[1] + " is " + a[2] + "!", lay: "cols n2", zones: [Z.hot, Z.cold]}}}
+        ];
+
+        function bindDrag(pc, zs, D, onDrop, onTap) {
+            var sx = 0, sy = 0, on = false, moved = false;
+            function hit(x, y) {for (var i = 0; i < zs.length; i++) {var r = zs[i].getBoundingClientRect(); if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return zs[i]} return null}
+            function clear() {zs.forEach(function (z) {z.classList.remove("over")})}
+            function back() {pc.classList.remove("drag"); pc.classList.add("ret"); pc.style.transform = ""; D.x = D.y = 0}
+            pc.onpointerdown = function (e) {e.preventDefault(); try {pc.setPointerCapture(e.pointerId)} catch (x) { } sx = e.clientX - D.x; sy = e.clientY - D.y; on = true; moved = false; pc.classList.remove("ret"); pc.classList.add("drag")};
+            pc.onpointermove = function (e) {if (!on) return; D.x = e.clientX - sx; D.y = e.clientY - sy; if (Math.abs(D.x) + Math.abs(D.y) > 8) moved = true; pc.style.transform = "translate(" + D.x + "px," + D.y + "px) scale(1.12)"; var z = hit(e.clientX, e.clientY); zs.forEach(function (q) {q.classList.toggle("over", q === z)})};
+            pc.onpointerup = function (e) {if (!on) return; on = false; clear(); if (!moved) {back(); onTap(); return } var z = hit(e.clientX, e.clientY); if (!(z && onDrop(z))) back()};
+            pc.onpointercancel = function () {on = false; clear(); back()};
+        }
+
+        function menu() {
+            TK++; S = null; document.body.className = "t-menu";
+            var h = '<div class="ttl">Pick a game!</div><div class="tiles">';
+            G.forEach(function (g, i) {h += '<button class="tile" style="--c:' + g.c + '" data-g="' + i + '"><span class="te">' + g.e + '</span><span class="tx"><span class="tt">' + g.t + '</span><span class="ts">' + g.s + '</span></span></button>'});
+            h += '</div><div class="book"><b>My stickers</b><span>' + (owned.length ? owned.slice(-10).join(" ") : "Win games to collect them!") + '</span></div>';
+            $("view").innerHTML = h; hud();
+            Array.prototype.forEach.call(document.querySelectorAll("[data-g]"), function (b) {b.onclick = function () {fx("ok"); start(+b.dataset.g)}});
+        }
+        function start(i) {S = {g: i, r: 0, wrong: 0, streak: 0}; document.body.className = G[i].th; msg("Let’s go!"); next()}
+        function next() {
+            if (S.r >= 5) return end();
+            var tk = ++TK, q = G[S.g].make(), locked = false, tried = false, dots = "";
+            for (var i = 0; i < 5; i++)dots += '<i class="' + (i < S.r ? "on" : "") + '">⭐</i>';
+            var h = '<div class="askrow"><div class="piece" id="pc">' + q.piece + '</div><div class="qt"><div class="pd">' + dots + '</div><div class="ask">' + q.ask + '</div><div class="hint">Drag me to the right place 👇</div></div><button class="mini" id="hear">🔊</button></div><div class="zones ' + q.lay + '" style="--n:' + q.zones.length + '">';
+            q.zones.forEach(function (z) {h += '<div class="zone ' + z.c + '" data-k="' + z.k + '">' + z.h + '</div>'});
+            $("view").innerHTML = h + '</div>';
+            var pc = $("pc"), zs = [].slice.call(document.querySelectorAll(".zone")), D = {x: 0, y: 0};
+            function hear() {if (q.hear) critter(q.hear); else talk(q.ask)}
+            function answer(z) {
+                if (locked) return false;
+                if (z.dataset.k === q.ans) {
+                    locked = true; z.classList.add("good");
+                    var r = z.getBoundingClientRect(), p = pc.getBoundingClientRect();
+                    pc.classList.remove("ret", "drag"); pc.classList.add("snap");
+                    pc.style.transform = "translate(" + (r.left + r.width / 2 - (p.left + p.width / 2 - D.x)) + "px," + (r.top + r.height / 2 - (p.top + p.height / 2 - D.y)) + "px) scale(.8)"; D.x = D.y = 0;
+                    stars++; S.streak++; hud(); fx("ok"); burst(z, ["⭐", "🎉", "✨"]); hop();
+                    msg(S.streak >= 3 ? "🔥 " + S.streak + " in a row!" : pick(PR, 1)[0]); talk(q.win); S.r++;
+                    setTimeout(function () {if (tk === TK) next()}, 2300); return true;
+                }
+                if (!tried) {tried = true; S.wrong++} S.streak = 0;
+                z.classList.remove("bad"); void z.offsetWidth; z.classList.add("bad");
+                fx("no"); msg("Oops! Try again 💪"); talk("Try again!"); return false;
+            }
+            bindDrag(pc, zs, D, answer, hear);
+            zs.forEach(function (z) {z.onclick = function () {answer(z)}});
+            $("hear").onclick = hear;
+            talk(q.ask); if (q.hear) setTimeout(function () {if (tk === TK) hear()}, 1900);
+        }
+        function end() {
+            TK++; var st = S.wrong === 0 ? 3 : S.wrong <= 2 ? 2 : 1, pool = STK.filter(function (x) {return owned.indexOf(x) < 0}), s = pick(pool.length ? pool : STK, 1)[0];
+            if (owned.indexOf(s) < 0) owned.push(s);
+            var h = '<div class="endbox" id="eb"><div class="t">🏆</div><div class="ttl">' + ["", "Nice try!", "Well done!", "Perfect!"][st] + '</div><div class="s3">' + new Array(st + 1).join("⭐") + '<span class="dim">' + new Array(4 - st).join("⭐") + '</span></div><div class="ask">New sticker: <span class="stk">' + s + '</span></div></div><div class="row2"><button id="again">🔁 Play again</button><button id="menu2">🏠 Menu</button></div>';
+            $("view").innerHTML = h; msg("You won a sticker! " + s); fx("win"); burst($("eb"), ["🎉", "⭐", "✨", "🎊"]); hop(); talk(["", "Nice try!", "Well done!", "Perfect! You are amazing!"][st]);
+            var g = S.g; $("again").onclick = function () {start(g)}; $("menu2").onclick = menu;
+        }
+        $("home").onclick = menu;
+        menu();
+    </script>
+</body>
+
+</html>
