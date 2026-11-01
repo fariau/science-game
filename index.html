@@ -4,8 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Fox Science Club v12</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&display=swap" rel="stylesheet">
+    <title>Fox Science Club</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦊</text></svg>">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Noto+Naskh+Arabic:wght@600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --ink: #27325a;
@@ -34,10 +38,16 @@
             height: 100%;
             overflow: hidden;
             color: var(--ink);
-            font-family: "Baloo 2", "Trebuchet MS", "Comic Sans MS", sans-serif;
+            font-family: "Baloo 2", "Noto Naskh Arabic", "Trebuchet MS", sans-serif;
             font-weight: 600;
             user-select: none;
             -webkit-user-select: none
+        }
+
+        body.ur {
+            font-family: "Noto Naskh Arabic", "Baloo 2", sans-serif;
+            font-weight: 700;
+            line-height: 1.5
         }
 
         .t-menu {
@@ -68,7 +78,8 @@
             position: fixed;
             inset: 0;
             z-index: 0;
-            background: linear-gradient(160deg, var(--c1), var(--c2))
+            background: linear-gradient(160deg, var(--c1), var(--c2));
+            transition: background .5s
         }
 
         #bg::before,
@@ -76,7 +87,8 @@
             content: "";
             position: absolute;
             border-radius: 50%;
-            background: rgba(255, 255, 255, .35)
+            background: rgba(255, 255, 255, .35);
+            animation: float 9s ease-in-out infinite alternate
         }
 
         #bg::before {
@@ -90,7 +102,14 @@
             width: 34vmax;
             height: 34vmax;
             right: -10vmax;
-            bottom: -10vmax
+            bottom: -10vmax;
+            animation-delay: -4s
+        }
+
+        @keyframes float {
+            to {
+                transform: translate(3vmax, 2vmax) scale(1.08)
+            }
         }
 
         @media (prefers-color-scheme:dark) {
@@ -141,10 +160,10 @@
             flex: none;
             display: flex;
             align-items: center;
-            gap: .7rem;
+            gap: .6rem;
             background: #fff;
             border-radius: 1.8rem;
-            padding: .5rem .9rem;
+            padding: .45rem .8rem;
             box-shadow: 0 .3rem 0 rgba(0, 0, 0, .12)
         }
 
@@ -162,24 +181,59 @@
 
         #acc {
             position: absolute;
-            top: -.6rem;
+            top: -.7rem;
             left: 50%;
             transform: translateX(-50%) rotate(-10deg);
             font-size: 1.4rem
         }
 
-        .fox.hop,
-        .zone.good .zan {
-            animation: hop .5s
+        #mb {
+            position: absolute;
+            right: -.5rem;
+            bottom: -.3rem;
+            font-size: 1.3rem
+        }
+
+        .fox.hop {
+            animation: hop .6s
+        }
+
+        .fox.sad {
+            animation: sad .6s;
+            filter: saturate(.6)
+        }
+
+        .fox.idle {
+            animation: idle 3s ease-in-out infinite
         }
 
         @keyframes hop {
-            40% {
-                transform: translateY(-.6rem) rotate(-8deg)
+            30% {
+                transform: translateY(-.9rem) rotate(-10deg)
             }
 
-            70% {
-                transform: rotate(6deg)
+            60% {
+                transform: translateY(0) rotate(8deg)
+            }
+
+            80% {
+                transform: translateY(-.3rem)
+            }
+        }
+
+        @keyframes sad {
+            25% {
+                transform: rotate(-12deg) translateY(.2rem)
+            }
+
+            75% {
+                transform: rotate(12deg) translateY(.2rem)
+            }
+        }
+
+        @keyframes idle {
+            50% {
+                transform: translateY(-.15rem) rotate(3deg)
             }
         }
 
@@ -188,8 +242,8 @@
             min-width: 0;
             background: #fff3c4;
             border-radius: 1.2rem;
-            padding: .35rem .8rem;
-            font-size: 1.1rem;
+            padding: .3rem .8rem;
+            font-size: 1.05rem;
             text-align: center;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -198,16 +252,16 @@
 
         .stars {
             flex: none;
-            font-size: 1.7rem;
+            font-size: 1.5rem;
             font-weight: 800
         }
 
         .hbtn {
             flex: none;
-            width: 2.8rem;
-            height: 2.8rem;
+            width: 2.7rem;
+            height: 2.7rem;
             padding: 0;
-            font-size: 1.4rem
+            font-size: 1.3rem
         }
 
         #view {
@@ -236,18 +290,32 @@
         }
 
         .tile {
-            background: var(--c);
+            background: linear-gradient(145deg, var(--c), var(--c2x));
             color: #fff;
             display: flex;
-            flex-direction: row;
             align-items: center;
-            justify-content: flex-start;
             gap: 1.2rem;
             border-radius: 2rem;
             padding: .4rem 1.6rem;
             box-shadow: 0 .35rem 0 rgba(0, 0, 0, .2);
             min-height: 0;
-            text-align: left
+            text-align: start;
+            animation: pop .5s backwards
+        }
+
+        .tile:nth-child(2) {
+            animation-delay: .1s
+        }
+
+        .tile:nth-child(3) {
+            animation-delay: .2s
+        }
+
+        @keyframes pop {
+            from {
+                transform: scale(.7);
+                opacity: 0
+            }
         }
 
         .te {
@@ -263,7 +331,7 @@
         .tt {
             font-size: 1.6rem;
             font-weight: 800;
-            line-height: 1.1
+            line-height: 1.2
         }
 
         .ts {
@@ -286,6 +354,23 @@
 
         .book b {
             font-size: 1rem
+        }
+
+        .opts {
+            flex: none;
+            display: flex;
+            gap: .7rem
+        }
+
+        .opts button {
+            flex: 1;
+            height: 2.8rem;
+            font-size: 1.1rem;
+            font-weight: 800
+        }
+
+        .opts button.off {
+            opacity: .55
         }
 
         .askrow {
@@ -323,7 +408,7 @@
         }
 
         .piece small {
-            font-size: min(1.1rem, 2.4vh);
+            font-size: min(1rem, 2.4vh);
             font-weight: 800;
             line-height: 1
         }
@@ -341,7 +426,7 @@
         .qt {
             flex: 1;
             min-width: 0;
-            text-align: left
+            text-align: start
         }
 
         .pd i {
@@ -357,7 +442,7 @@
         .ask {
             font-size: 1.5rem;
             font-weight: 800;
-            line-height: 1.15
+            line-height: 1.3
         }
 
         .hint {
@@ -408,6 +493,10 @@
 
         .zone.good {
             outline: .35rem solid #2fb36b
+        }
+
+        .zone.good .zan {
+            animation: hop .6s
         }
 
         .zone.bad {
@@ -463,10 +552,6 @@
             background: linear-gradient(#a6e0ff, #5aa9ff)
         }
 
-        .za {
-            background: #fff
-        }
-
         .za:nth-child(1) {
             background: #ffe3c2
         }
@@ -506,7 +591,8 @@
 
         .endbox .t {
             font-size: min(5rem, 11vh);
-            line-height: 1
+            line-height: 1;
+            animation: hop .8s
         }
 
         .s3 {
@@ -596,16 +682,595 @@
 
         @media (prefers-reduced-motion:reduce) {
 
-            .fox.hop,
+            .fox,
             .zone.good .zan,
             .zone.bad,
-            .conf {
-                animation: none
+            .conf,
+            #bg::before,
+            #bg::after,
+            .tile,
+            .endbox .t {
+                animation: none !important
             }
 
             .piece.ret,
             .piece.snap {
                 transition: none
+            }
+        }
+
+        .top {
+            background: rgba(255, 255, 255, .88);
+            backdrop-filter: blur(8px);
+            border: .15rem solid #fff;
+            box-shadow: 0 .4rem 1rem rgba(39, 50, 90, .15);
+            border-radius: 2rem
+        }
+
+        .fox {
+            width: 3.6rem;
+            height: 3.6rem;
+            background: radial-gradient(circle at 35% 30%, #fff7d6, #ffd982);
+            border: .2rem solid #ff9a5c;
+            box-shadow: 0 .2rem 0 rgba(255, 122, 69, .35)
+        }
+
+        .say {
+            background: linear-gradient(135deg, #fff7d0, #ffe9a0);
+            color: #6b4a00;
+            font-size: 1.1rem;
+            border-radius: 1.4rem;
+            box-shadow: inset 0 -.15rem 0 rgba(0, 0, 0, .06)
+        }
+
+        .stars {
+            background: linear-gradient(#ffe680, #ffb91f);
+            color: #7a4600;
+            padding: .05rem .8rem;
+            border-radius: 2rem;
+            box-shadow: 0 .2rem 0 #d98c00;
+            font-size: 1.4rem
+        }
+
+        .hbtn {
+            background: linear-gradient(#fff, #e9f0ff);
+            border: .12rem solid #cfdcff;
+            border-radius: 50%
+        }
+
+        .ttl {
+            font-size: 2.3rem;
+            color: #fff;
+            letter-spacing: .02em;
+            text-shadow: 0 .15rem 0 rgba(39, 50, 90, .45), .08rem .08rem 0 rgba(39, 50, 90, .3), -.08rem -.08rem 0 rgba(39, 50, 90, .3)
+        }
+
+        .tile {
+            position: relative;
+            overflow: hidden;
+            border: .2rem solid rgba(255, 255, 255, .6);
+            border-radius: 2.2rem;
+            box-shadow: 0 .45rem 0 rgba(0, 0, 0, .22), inset 0 .35rem .7rem rgba(255, 255, 255, .4);
+            transition: transform .15s
+        }
+
+        .tile::after {
+            content: "";
+            position: absolute;
+            width: 60%;
+            height: 140%;
+            left: -30%;
+            top: -20%;
+            background: rgba(255, 255, 255, .14);
+            transform: rotate(20deg);
+            pointer-events: none
+        }
+
+        .tile:hover {
+            transform: translateY(-.2rem) scale(1.02)
+        }
+
+        .te {
+            display: grid;
+            place-items: center;
+            flex: none;
+            width: 1.35em;
+            height: 1.35em;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .3);
+            box-shadow: inset 0 -.2rem 0 rgba(0, 0, 0, .1)
+        }
+
+        .tt {
+            text-shadow: 0 .1rem 0 rgba(0, 0, 0, .2)
+        }
+
+        .go {
+            position: absolute;
+            top: .6rem;
+            inset-inline-end: .8rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: #fff;
+            color: var(--c);
+            display: grid;
+            place-items: center;
+            font-size: .9rem;
+            box-shadow: 0 .15rem 0 rgba(0, 0, 0, .2)
+        }
+
+        .book {
+            border: .15rem solid #fff;
+            background: rgba(255, 255, 255, .88);
+            box-shadow: 0 .3rem 0 rgba(0, 0, 0, .1);
+            border-radius: 1.8rem;
+            padding: .5rem 1.1rem
+        }
+
+        .book b {
+            background: linear-gradient(135deg, #ff9a5c, #ff5d8f);
+            color: #fff;
+            padding: .1rem .7rem;
+            border-radius: 1rem
+        }
+
+        .opts button {
+            background: linear-gradient(#fff, #eef3ff);
+            border: .15rem solid #fff;
+            border-radius: 2rem;
+            box-shadow: 0 .3rem 0 rgba(39, 50, 90, .2)
+        }
+
+        .opts button.off {
+            opacity: .55;
+            filter: grayscale(.6)
+        }
+
+        .askrow {
+            border: .18rem solid #fff;
+            border-radius: 2.2rem;
+            background: rgba(255, 255, 255, .92);
+            box-shadow: 0 .4rem 1rem rgba(39, 50, 90, .15)
+        }
+
+        .piece {
+            background: radial-gradient(circle at 35% 30%, #fffbe8, #ffe9a0);
+            animation: wig 2.4s ease-in-out infinite
+        }
+
+        .piece.drag {
+            animation: none
+        }
+
+        @keyframes wig {
+
+            0%,
+            70%,
+            100% {
+                transform: rotate(0)
+            }
+
+            78% {
+                transform: rotate(-6deg)
+            }
+
+            86% {
+                transform: rotate(6deg)
+            }
+
+            94% {
+                transform: rotate(-3deg)
+            }
+        }
+
+        .pd i {
+            display: inline-block;
+            transition: transform .3s
+        }
+
+        .pd i.on {
+            transform: scale(1.25);
+            filter: drop-shadow(0 .1rem 0 rgba(0, 0, 0, .2))
+        }
+
+        .ask {
+            color: var(--ink)
+        }
+
+        .zone {
+            border: .25rem solid rgba(255, 255, 255, .75);
+            border-radius: 2rem;
+            box-shadow: 0 .4rem 0 rgba(0, 0, 0, .2), inset 0 .5rem 1rem rgba(255, 255, 255, .3)
+        }
+
+        .zone.over {
+            box-shadow: 0 .5rem 1.2rem rgba(0, 0, 0, .3), inset 0 0 0 .3rem #fff
+        }
+
+        .za {
+            border-color: #fff
+        }
+
+        .zn {
+            background: rgba(255, 255, 255, .7);
+            padding: 0 .8rem;
+            border-radius: 1rem
+        }
+
+        .endbox {
+            background: radial-gradient(circle at 50% 20%, #fff9d6, #fff 60%);
+            border: .2rem solid #fff;
+            border-radius: 2.2rem
+        }
+
+        .row2 button {
+            background: linear-gradient(var(--ac), color-mix(in srgb, var(--ac) 70%, #000));
+            color: #fff;
+            border: .15rem solid rgba(255, 255, 255, .7);
+            box-shadow: 0 .35rem 0 rgba(0, 0, 0, .25);
+            text-shadow: 0 .1rem 0 rgba(0, 0, 0, .2)
+        }
+
+        .row2 button:last-child {
+            background: #fff;
+            color: var(--ink);
+            border-color: var(--ac);
+            box-shadow: 0 .35rem 0 var(--ac);
+            text-shadow: none
+        }
+
+        .dc {
+            position: absolute;
+            font-size: 2rem;
+            opacity: .5;
+            animation: float 7s ease-in-out infinite alternate;
+            pointer-events: none
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            .piece,
+            .dc {
+                animation: none !important
+            }
+        }
+
+        /* Space lab theme */
+        .t-menu {
+            --c1: #1b1464;
+            --c2: #7a3fb0
+        }
+
+        .t-hab {
+            --c1: #0b3d2e;
+            --c2: #22a07f
+        }
+
+        .t-snd {
+            --c1: #4a1942;
+            --c2: #d1566f
+        }
+
+        .t-tmp {
+            --c1: #0d2b52;
+            --c2: #3a86e0
+        }
+
+        #bg {
+            background: radial-gradient(1.5px 1.5px at 12% 18%, #fff, transparent), radial-gradient(1.5px 1.5px at 78% 12%, #fff, transparent), radial-gradient(2px 2px at 40% 62%, #fff, transparent), radial-gradient(1.5px 1.5px at 90% 70%, #fff, transparent), radial-gradient(1px 1px at 25% 85%, #fff, transparent), radial-gradient(1.5px 1.5px at 60% 30%, #fff, transparent), radial-gradient(1px 1px at 8% 55%, #fff, transparent), radial-gradient(1px 1px at 55% 92%, #fff, transparent), linear-gradient(170deg, var(--c1), var(--c2))
+        }
+
+        #bg::before {
+            background: radial-gradient(circle, rgba(255, 255, 255, .22), transparent 65%)
+        }
+
+        #bg::after {
+            background: radial-gradient(circle, rgba(255, 200, 120, .28), transparent 65%)
+        }
+
+        .dc {
+            opacity: .7;
+            filter: drop-shadow(0 0 .5rem rgba(255, 255, 255, .6))
+        }
+
+        .top,
+        .askrow,
+        .book {
+            background: rgba(18, 12, 56, .55);
+            border: .12rem solid rgba(255, 255, 255, .28);
+            color: #fff;
+            box-shadow: 0 .4rem 1.2rem rgba(0, 0, 0, .3)
+        }
+
+        .ask,
+        .hint {
+            color: #fff
+        }
+
+        .hbtn,
+        .opts button {
+            background: rgba(255, 255, 255, .16);
+            border: .12rem solid rgba(255, 255, 255, .35);
+            color: #fff;
+            box-shadow: 0 .25rem 0 rgba(0, 0, 0, .25)
+        }
+
+        .opts button.off {
+            opacity: .5
+        }
+
+        .mini {
+            background: rgba(255, 255, 255, .9);
+            color: var(--ink)
+        }
+
+        .tile {
+            color: #fff;
+            background: linear-gradient(160deg, rgba(255, 255, 255, .24), rgba(255, 255, 255, .05));
+            backdrop-filter: blur(6px);
+            border: .14rem solid color-mix(in srgb, var(--c) 65%, #fff);
+            box-shadow: 0 0 1.4rem color-mix(in srgb, var(--c) 70%, transparent), inset 0 0 1.2rem rgba(255, 255, 255, .1), 0 .35rem 0 rgba(0, 0, 0, .25)
+        }
+
+        .tile::after {
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .18), transparent);
+            width: 40%;
+            left: -60%;
+            animation: shine 4s ease-in-out infinite
+        }
+
+        @keyframes shine {
+            to {
+                left: 130%
+            }
+        }
+
+        .te {
+            background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--c) 40%, #fff), var(--c));
+            box-shadow: 0 0 1rem var(--c), inset 0 -.2rem 0 rgba(0, 0, 0, .15)
+        }
+
+        .go {
+            background: var(--c);
+            color: #fff;
+            box-shadow: 0 0 .7rem var(--c)
+        }
+
+        .zone {
+            border: .2rem solid rgba(255, 255, 255, .55);
+            box-shadow: 0 0 1.2rem rgba(255, 255, 255, .18), 0 .4rem 0 rgba(0, 0, 0, .25)
+        }
+
+        .zone.over {
+            box-shadow: 0 0 2rem #fff, inset 0 0 0 .3rem #fff
+        }
+
+        .zone.za:nth-child(n) {
+            background: linear-gradient(160deg, rgba(255, 255, 255, .28), rgba(255, 255, 255, .08));
+            backdrop-filter: blur(6px)
+        }
+
+        .zn {
+            color: #fff;
+            background: rgba(0, 0, 0, .3)
+        }
+
+        .book b {
+            background: linear-gradient(135deg, #ffb347, #ff5d8f)
+        }
+
+        .endbox {
+            background: linear-gradient(160deg, rgba(255, 255, 255, .95), rgba(255, 244, 214, .92));
+            box-shadow: 0 0 2rem rgba(255, 220, 120, .5), 0 .35rem 0 rgba(0, 0, 0, .2)
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            .tile::after {
+                animation: none !important
+            }
+        }
+
+        /* Sunny Meadow cartoon theme */
+        .t-menu {
+            --c1: #6fcfff;
+            --c2: #dff7ff
+        }
+
+        .t-hab {
+            --c1: #7fdcff;
+            --c2: #eaffd6
+        }
+
+        .t-snd {
+            --c1: #ffc46b;
+            --c2: #fff3d2
+        }
+
+        .t-tmp {
+            --c1: #9fe0ff;
+            --c2: #fff2d6
+        }
+
+        #bg {
+            background: radial-gradient(circle at 88% 11%, #fffbd0 0 4%, #ffd84d 5% 8%, rgba(255, 216, 77, .35) 9%, transparent 20%), radial-gradient(ellipse 75% 26% at 15% 106%, #6bcf6f 97%, transparent 100%), radial-gradient(ellipse 85% 24% at 88% 108%, #43b25c 97%, transparent 100%), linear-gradient(180deg, var(--c1), var(--c2))
+        }
+
+        #bg::before,
+        #bg::after {
+            right: auto;
+            bottom: auto;
+            height: 3.2rem;
+            border-radius: 3rem;
+            background: #fff;
+            opacity: .9;
+            box-shadow: 1.6rem -1rem 0 .4rem #fff, -1.2rem -.5rem 0 0 #fff;
+            animation: drift 50s linear infinite
+        }
+
+        #bg::before {
+            width: 9rem;
+            left: -20%;
+            top: 10%
+        }
+
+        #bg::after {
+            width: 7rem;
+            left: -30%;
+            top: 26%;
+            animation-duration: 70s;
+            animation-delay: -25s
+        }
+
+        @keyframes drift {
+            to {
+                transform: translateX(150vw)
+            }
+        }
+
+        .dc {
+            opacity: 1;
+            filter: none;
+            font-size: 2.2rem
+        }
+
+        .top,
+        .askrow,
+        .book {
+            background: #fff;
+            backdrop-filter: none;
+            border: .2rem solid var(--ink);
+            color: var(--ink);
+            box-shadow: 0 .3rem 0 var(--ink)
+        }
+
+        .ask,
+        .hint {
+            color: var(--ink)
+        }
+
+        .say {
+            border: .12rem solid var(--ink)
+        }
+
+        .fox {
+            border: .18rem solid var(--ink);
+            box-shadow: 0 .2rem 0 var(--ink)
+        }
+
+        .stars {
+            border: .15rem solid var(--ink);
+            box-shadow: 0 .2rem 0 var(--ink)
+        }
+
+        .hbtn,
+        .opts button {
+            background: #fff3c4;
+            color: var(--ink);
+            border: .18rem solid var(--ink);
+            box-shadow: 0 .25rem 0 var(--ink)
+        }
+
+        .ttl {
+            color: #fff;
+            text-shadow: 0 .15rem 0 var(--ink), .12rem 0 0 var(--ink), -.12rem 0 0 var(--ink), 0 -.12rem 0 var(--ink), .1rem .12rem 0 var(--ink), -.1rem .12rem 0 var(--ink)
+        }
+
+        .tile {
+            background: var(--c);
+            backdrop-filter: none;
+            border: .2rem solid var(--ink);
+            box-shadow: 0 .45rem 0 var(--ink)
+        }
+
+        .tile::after {
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform: none;
+            animation: none;
+            background: radial-gradient(rgba(255, 255, 255, .3) .12rem, transparent .15rem) 0 0/.9rem .9rem
+        }
+
+        .tile>* {
+            position: relative;
+            z-index: 1
+        }
+
+        .tt {
+            text-shadow: .1rem .1rem 0 rgba(39, 50, 90, .65)
+        }
+
+        .te {
+            background: #fff;
+            border: .15rem solid var(--ink);
+            box-shadow: 0 .2rem 0 var(--ink)
+        }
+
+        .go {
+            background: #fff;
+            color: var(--ink);
+            border: .15rem solid var(--ink);
+            box-shadow: none
+        }
+
+        .zone {
+            border: .2rem solid var(--ink);
+            box-shadow: 0 .4rem 0 var(--ink)
+        }
+
+        .zone.over {
+            box-shadow: 0 .4rem 0 var(--ink), inset 0 0 0 .3rem #fff
+        }
+
+        .zone.za:nth-child(n) {
+            backdrop-filter: none
+        }
+
+        .zone.za:nth-child(1) {
+            background: #ffe3c2
+        }
+
+        .zone.za:nth-child(2) {
+            background: #d6f0ff
+        }
+
+        .zone.za:nth-child(3) {
+            background: #e6dcff
+        }
+
+        .zn {
+            color: var(--ink);
+            background: #fff;
+            border: .12rem solid var(--ink)
+        }
+
+        .endbox {
+            background: #fff9d6;
+            border: .2rem solid var(--ink);
+            box-shadow: 0 .4rem 0 var(--ink)
+        }
+
+        .row2 button {
+            background: var(--ac);
+            color: #fff;
+            border: .2rem solid var(--ink);
+            box-shadow: 0 .35rem 0 var(--ink);
+            text-shadow: .1rem .1rem 0 rgba(39, 50, 90, .6)
+        }
+
+        .row2 button:last-child {
+            background: #fff;
+            color: var(--ink);
+            text-shadow: none
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+
+            #bg::before,
+            #bg::after {
+                animation: none !important
             }
         }
     </style>
@@ -615,71 +1280,83 @@
     <div id="bg"></div>
     <div id="app">
         <header class="top">
-            <div class="fox" id="fox" aria-hidden="true">🦊<span id="acc"></span></div>
-            <div class="say" id="say">Hi! Let’s play!</div>
+            <div class="fox idle" id="fox" aria-hidden="true"><span id="fe">🦊</span><span id="acc"></span><span
+                    id="mb"></span></div>
+            <div class="say" id="say"></div>
             <div class="stars">⭐ <span id="n">0</span></div>
+            <button class="hbtn" id="mute" aria-label="Sound">🔊</button>
             <button class="hbtn" id="home" aria-label="Menu">🏠</button>
         </header>
         <main id="view"></main>
     </div>
     <div id="fx" aria-hidden="true"></div>
     <script>
-        var stars = 0, owned = [], S = null, DK = {}, TK = 0, AC = null;
-        var $ = function (i) {return document.getElementById(i)};
-        function pick(a, n) {return a.slice().sort(function () {return Math.random() - .5}).slice(0, n)}
-        function draw(k, a) {if (!DK[k] || !DK[k].length) DK[k] = pick(a, a.length); return DK[k].pop()}
-        function talk(t, p, r) {try {speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(t); u.lang = "en-US"; u.pitch = p || 1.15; u.rate = r || .9; speechSynthesis.speak(u)} catch (e) { } }
-        var CR = {cat: ["Meeeow! Meow!", 2, .8], dog: ["Woof! Woof!", .7, 1.1], cow: ["Moooooo!", .3, .5], sheep: ["Baaaaa! Baaaa!", 1.8, .6], pig: ["Oink! Oink! Oink!", .4, 1], frog: ["Ribbit! Ribbit!", .5, 1.2], duck: ["Quack! Quack!", 1.7, 1.2], horse: ["Neeeeigh!", 1.4, .7]};
-        function critter(k) {var c = CR[k]; talk(c[0], c[1], c[2])}
-        var FX = {ok: [[660, .1, 0], [880, .12, .1], [1175, .2, .22]], no: [[220, .18, 0], [165, .25, .16]], win: [[523, .12, 0], [659, .12, .12], [784, .12, .24], [1047, .3, .36]]};
-        function fx(k) {try {AC = AC || new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === "suspended") AC.resume(); FX[k].forEach(function (s) {var o = AC.createOscillator(), g = AC.createGain(), t0 = AC.currentTime + s[2]; o.type = k === "no" ? "triangle" : "sine"; o.frequency.value = s[0]; g.gain.setValueAtTime(.0001, t0); g.gain.exponentialRampToValueAtTime(.25, t0 + .02); g.gain.exponentialRampToValueAtTime(.0001, t0 + s[1]); o.connect(g); g.connect(AC.destination); o.start(t0); o.stop(t0 + s[1] + .05)})} catch (e) { } }
-        function burst(el, em) {var r = el.getBoundingClientRect(); for (var i = 0; i < 9; i++) {var s = document.createElement("span"); s.className = "conf"; s.textContent = em[i % em.length]; s.style.left = (r.left + r.width / 2) + "px"; s.style.top = (r.top + r.height / 2) + "px"; s.style.setProperty("--x", (Math.random() * 260 - 130) + "px"); s.style.setProperty("--y", (-40 - Math.random() * 160) + "px"); s.style.setProperty("--r", (Math.random() * 360) + "deg"); $("fx").appendChild(s); setTimeout(function (e) {return function () {e.remove()}}(s), 1000)} }
-        function msg(t) {$("say").textContent = t}
-        function hud() {$("n").textContent = stars; $("acc").textContent = stars >= 25 ? "👑" : stars >= 12 ? "🎩" : stars >= 5 ? "🎀" : ""}
-        function hop() {var f = $("fox"); f.classList.remove("hop"); void f.offsetWidth; f.classList.add("hop")}
+        var P = { stars: 0, owned: [], lang: "en", snd: 1, mus: 1 }, S = null, DK = {}, TK = 0, AC = null, MT = null, MN = 0;
+        try { var sv = JSON.parse(localStorage.getItem("fsc") || "null"); if (sv) for (var k in sv) P[k] = sv[k] } catch (e) { }
+        function save() { try { localStorage.setItem("fsc", JSON.stringify(P)) } catch (e) { } }
+        var $ = function (i) { return document.getElementById(i) };
+        function T(en, ur) { return P.lang == "ur" ? ur : en }
+        function nm(a) { return T(a[1], a[2]) }
+        function pick(a, n) { return a.slice().sort(function () { return Math.random() - .5 }).slice(0, n) }
+        function draw(k, a) { if (!DK[k] || !DK[k].length) DK[k] = pick(a, a.length); return DK[k].pop() }
+        function talk(t, p, r) { if (!P.snd) return; try { speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(t); u.lang = P.lang == "ur" ? "ur-PK" : "en-US"; u.pitch = p || 1.15; u.rate = r || .9; speechSynthesis.speak(u) } catch (e) { } }
+        function ctx() { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); if (AC.state === "suspended") AC.resume(); return AC }
+        function tone(f, d, t0, ty, v) { var a = ctx(), o = a.createOscillator(), g = a.createGain(); t0 = a.currentTime + t0; o.type = ty || "sine"; o.frequency.value = f; g.gain.setValueAtTime(.0001, t0); g.gain.exponentialRampToValueAtTime(v || .25, t0 + .02); g.gain.exponentialRampToValueAtTime(.0001, t0 + d); o.connect(g); g.connect(a.destination); o.start(t0); o.stop(t0 + d + .05) }
+        var FX = { ok: [[660, .1, 0], [880, .12, .1], [1175, .2, .22]], no: [[220, .18, 0], [165, .25, .16]], win: [[523, .12, 0], [659, .12, .12], [784, .12, .24], [1047, .3, .36]] };
+        function fx(k) { if (!P.snd) return; try { FX[k].forEach(function (s) { tone(s[0], s[1], s[2], k == "no" ? "triangle" : "sine") }) } catch (e) { } }
+        var NOTES = [523, 587, 659, 784, 880, 784, 659, 587];
+        function music() { clearInterval(MT); if (!P.snd || !P.mus) return; try { ctx(); MT = setInterval(function () { MN = Math.max(0, Math.min(NOTES.length * 2 - 1, MN + pick([-2, -1, 1, 2, 3], 1)[0])); var f = NOTES[MN % NOTES.length] * (MN >= NOTES.length ? 1 : .5); tone(f, .5, 0, "triangle", .05) }, 520) } catch (e) { } }
+        function burst(el, em) { var r = el.getBoundingClientRect(); for (var i = 0; i < 12; i++) { var s = document.createElement("span"); s.className = "conf"; s.textContent = em[i % em.length]; s.style.left = (r.left + r.width / 2) + "px"; s.style.top = (r.top + r.height / 2) + "px"; s.style.setProperty("--x", (Math.random() * 300 - 150) + "px"); s.style.setProperty("--y", (-40 - Math.random() * 180) + "px"); s.style.setProperty("--r", (Math.random() * 360) + "deg"); $("fx").appendChild(s); setTimeout(function (e) { return function () { e.remove() } }(s), 1000) } }
+        function msg(t) { $("say").textContent = t }
+        function hud() { $("n").textContent = P.stars; $("acc").textContent = P.stars >= 25 ? "👑" : P.stars >= 12 ? "🎩" : P.stars >= 5 ? "🎀" : ""; $("mute").textContent = P.snd ? "🔊" : "🔇" }
+        function mood(m) { var f = $("fox"); f.classList.remove("hop", "sad", "idle"); void f.offsetWidth; f.classList.add(m == "sad" ? "sad" : "hop"); $("fe").textContent = m == "sad" ? "🦊" : "🦊"; $("mb").textContent = m == "sad" ? "😢" : "😍"; setTimeout(function () { f.classList.remove("hop", "sad"); f.classList.add("idle"); $("mb").textContent = "" }, 900) }
 
-        var HAB = [["🐟", "fish", "water"], ["🐬", "dolphin", "water"], ["🐙", "octopus", "water"], ["🐢", "turtle", "water"], ["🐄", "cow", "land"], ["🐘", "elephant", "land"], ["🦁", "lion", "land"], ["🐇", "rabbit", "land"], ["🦅", "eagle", "sky"], ["🦉", "owl", "sky"], ["🦋", "butterfly", "sky"], ["🐝", "bee", "sky"]];
-        var WH = {water: "in water", land: "on land", sky: "in the sky"};
-        var SND = [["🐱", "cat", "Meow"], ["🐶", "dog", "Woof"], ["🐄", "cow", "Moo"], ["🐑", "sheep", "Baa"], ["🐷", "pig", "Oink"], ["🐸", "frog", "Ribbit"], ["🦆", "duck", "Quack"], ["🐴", "horse", "Neigh"]];
-        var TMP = [["☃️", "snowman", "cold"], ["🔥", "fire", "hot"], ["🍦", "ice cream", "cold"], ["☀️", "sun", "hot"], ["🧊", "ice", "cold"], ["☕", "hot tea", "hot"], ["🐧", "penguin", "cold"], ["🌋", "volcano", "hot"]];
+        var HAB = [["🐟", "fish", "مچھلی", "water"], ["🐬", "dolphin", "ڈولفن", "water"], ["🐙", "octopus", "آکٹوپس", "water"], ["🐢", "turtle", "کچھوا", "water"], ["🐄", "cow", "گائے", "land"], ["🐘", "elephant", "ہاتھی", "land"], ["🦁", "lion", "شیر", "land"], ["🐇", "rabbit", "خرگوش", "land"], ["🦅", "eagle", "عقاب", "sky"], ["🦉", "owl", "الو", "sky"], ["🦋", "butterfly", "تتلی", "sky"], ["🐝", "bee", "شہد کی مکھی", "sky"]];
+        var WH = { water: ["in water", "پانی میں"], land: ["on land", "زمین پر"], sky: ["in the sky", "آسمان میں"] };
+        var SND = [["🐱", "cat", "بلی", "Meow", "میاؤں", 2, .8], ["🐶", "dog", "کتا", "Woof", "بھوں بھوں", .7, 1.1], ["🐄", "cow", "گائے", "Moo", "ماؤں", .3, .5], ["🐑", "sheep", "بھیڑ", "Baa", "میں میں", 1.8, .6], ["🐷", "pig", "سور", "Oink", "اوئنک", .4, 1], ["🐸", "frog", "مینڈک", "Ribbit", "ٹراں ٹراں", .5, 1.2], ["🦆", "duck", "بطخ", "Quack", "کوئیک", 1.7, 1.2], ["🐴", "horse", "گھوڑا", "Neigh", "ہنہنہ", 1.4, .7]];
+        var TMP = [["☃️", "snowman", "برف کا آدمی", "cold"], ["🔥", "fire", "آگ", "hot"], ["🍦", "ice cream", "آئس کریم", "cold"], ["☀️", "sun", "سورج", "hot"], ["🧊", "ice", "برف", "cold"], ["☕", "hot tea", "گرم چائے", "hot"], ["🐧", "penguin", "پینگوئن", "cold"], ["🌋", "volcano", "آتش فشاں", "hot"]];
         var STK = ["🦄", "🐉", "🚀", "🌈", "🍭", "🎈", "🦖", "🐳", "🦋", "🐼", "🦁", "🐸", "🐙", "🍉", "🎨", "🛸"];
-        var PR = ["Great job! 🎉", "Super! ⭐", "You’re a star!", "Awesome! 🌟", "Yay! Well done!"];
-        var Z = {sky: {k: "sky", c: "zs", h: '<div class="zd"><span>☁️</span><span>☁️</span><span>☁️</span></div><span class="zl">☁️ Sky</span>'}, land: {k: "land", c: "zg", h: '<div class="zd"><span>🌳</span><span>🌴</span><span>🌳</span></div><span class="zl">🌳 Land</span>'}, water: {k: "water", c: "zw", h: '<div class="zd"><span>🌊</span><span>🌊</span><span>🌊</span></div><span class="zl">🌊 Water</span>'}, hot: {k: "hot", c: "zh", h: '<div class="zd"><span>☀️</span><span>☀️</span></div><span class="zl">🔥 Hot</span>'}, cold: {k: "cold", c: "zc", h: '<div class="zd"><span>❄️</span><span>❄️</span></div><span class="zl">❄️ Cold</span>'}};
+        var PR = [["Great job! 🎉", "شاباش! 🎉"], ["Super! ⭐", "زبردست! ⭐"], ["You’re a star!", "تم ستارے ہو!"], ["Awesome! 🌟", "کمال! 🌟"], ["Yay! Well done!", "واہ! بہت خوب!"]];
+        function Z(k) { var d = { sky: ["zs", "☁️", "☁️ Sky", "☁️ آسمان"], land: ["zg", "🌳", "🌳 Land", "🌳 زمین"], water: ["zw", "🌊", "🌊 Water", "🌊 پانی"], hot: ["zh", "☀️", "🔥 Hot", "🔥 گرم"], cold: ["zc", "❄️", "❄️ Cold", "❄️ ٹھنڈا"] }[k]; return { k: k, c: d[0], h: '<div class="zd"><span>' + d[1] + '</span><span>' + d[1] + '</span><span>' + d[1] + '</span></div><span class="zl">' + T(d[2], d[3]) + '</span>' } }
         var G = [
-            {e: "🌍", t: "Where do I live?", s: "Drag the animal home", c: "#2fb36b", th: "t-hab", make: function () {var a = draw("h", HAB); return {piece: '<span class="pe">' + a[0] + '</span>', ask: "Where does the " + a[1] + " live?", ans: a[2], win: "Yes! The " + a[1] + " lives " + WH[a[2]] + "!", lay: "rows", zones: [Z.sky, Z.land, Z.water]}}},
-            {e: "🔊", t: "Who says that?", s: "Drag the sound to the animal", c: "#ff8c42", th: "t-snd", make: function () {var a = draw("s", SND), o = pick([a].concat(pick(SND.filter(function (x) {return x !== a}), 2)), 3); return {piece: '<span class="pe">🔊</span><small>' + a[2] + '!</small>', ask: "Who makes this sound?", hear: a[1], ans: a[1], win: "Yes! The " + a[1] + " says " + a[2] + "!", lay: "cols n3", zones: o.map(function (x) {return {k: x[1], c: "za", h: '<span class="zan">' + x[0] + '</span><span class="zn">' + x[1] + '</span>'}})}}},
-            {e: "🌡️", t: "Hot or cold?", s: "Drag it to hot or cold", c: "#3b9cf0", th: "t-tmp", make: function () {var a = draw("t", TMP); return {piece: '<span class="pe">' + a[0] + '</span>', ask: "Is the " + a[1] + " hot or cold?", ans: a[2], win: "Yes! The " + a[1] + " is " + a[2] + "!", lay: "cols n2", zones: [Z.hot, Z.cold]}}}
+            { e: "🌍", t: ["Where do I live?", "میں کہاں رہتا ہوں؟"], s: ["Drag the animal home", "جانور کو اس کے گھر لے جاؤ"], c: "#2fb36b", d: "#6fd37f", th: "t-hab", make: function () { var a = draw("h", HAB); return { piece: '<span class="pe">' + a[0] + '</span>', ask: T("Where does the " + a[1] + " live?", a[2] + " کا گھر کہاں ہے؟"), ans: a[3], win: T("Yes! The " + a[1] + " lives " + WH[a[3]][0] + "!", "شاباش! " + a[2] + " کا گھر " + WH[a[3]][1] + " ہے!"), lay: "rows", zones: [Z("sky"), Z("land"), Z("water")] } } },
+            { e: "🔊", t: ["Who says that?", "یہ کس کی آواز ہے؟"], s: ["Drag the sound to the animal", "آواز کو جانور تک لے جاؤ"], c: "#ff8c42", d: "#ffb36b", th: "t-snd", make: function () { var a = draw("s", SND), o = pick([a].concat(pick(SND.filter(function (x) { return x !== a }), 2)), 3); return { piece: '<span class="pe">🔊</span><small>' + T(a[3], a[4]) + '!</small>', ask: T("Who makes this sound?", "یہ آواز کس کی ہے؟"), hear: a, ans: a[1], win: T("Yes! The " + a[1] + " says " + a[3] + "!", "شاباش! " + a[2] + " کہتا ہے: " + a[4] + "!"), lay: "cols n3", zones: o.map(function (x) { return { k: x[1], c: "za", h: '<span class="zan">' + x[0] + '</span><span class="zn">' + nm(x) + '</span>' } }) } } },
+            { e: "🌡️", t: ["Hot or cold?", "گرم یا ٹھنڈا؟"], s: ["Drag it to hot or cold", "اسے گرم یا ٹھنڈے میں لے جاؤ"], c: "#3b9cf0", d: "#74c0ff", th: "t-tmp", make: function () { var a = draw("t", TMP); return { piece: '<span class="pe">' + a[0] + '</span>', ask: T("Is the " + a[1] + " hot or cold?", "کیا " + a[2] + " گرم ہے یا ٹھنڈا؟"), ans: a[3], win: T("Yes! The " + a[1] + " is " + a[3] + "!", "شاباش! " + a[2] + " " + (a[3] == "hot" ? "گرم" : "ٹھنڈا") + " ہے!"), lay: "cols n2", zones: [Z("hot"), Z("cold")] } } }
         ];
 
         function bindDrag(pc, zs, D, onDrop, onTap) {
             var sx = 0, sy = 0, on = false, moved = false;
-            function hit(x, y) {for (var i = 0; i < zs.length; i++) {var r = zs[i].getBoundingClientRect(); if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return zs[i]} return null}
-            function clear() {zs.forEach(function (z) {z.classList.remove("over")})}
-            function back() {pc.classList.remove("drag"); pc.classList.add("ret"); pc.style.transform = ""; D.x = D.y = 0}
-            pc.onpointerdown = function (e) {e.preventDefault(); try {pc.setPointerCapture(e.pointerId)} catch (x) { } sx = e.clientX - D.x; sy = e.clientY - D.y; on = true; moved = false; pc.classList.remove("ret"); pc.classList.add("drag")};
-            pc.onpointermove = function (e) {if (!on) return; D.x = e.clientX - sx; D.y = e.clientY - sy; if (Math.abs(D.x) + Math.abs(D.y) > 8) moved = true; pc.style.transform = "translate(" + D.x + "px," + D.y + "px) scale(1.12)"; var z = hit(e.clientX, e.clientY); zs.forEach(function (q) {q.classList.toggle("over", q === z)})};
-            pc.onpointerup = function (e) {if (!on) return; on = false; clear(); if (!moved) {back(); onTap(); return } var z = hit(e.clientX, e.clientY); if (!(z && onDrop(z))) back()};
-            pc.onpointercancel = function () {on = false; clear(); back()};
+            function hit(x, y) { for (var i = 0; i < zs.length; i++) { var r = zs[i].getBoundingClientRect(); if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return zs[i] } return null }
+            function clear() { zs.forEach(function (z) { z.classList.remove("over") }) }
+            function back() { pc.classList.remove("drag"); pc.classList.add("ret"); pc.style.transform = ""; D.x = D.y = 0 }
+            pc.onpointerdown = function (e) { e.preventDefault(); try { pc.setPointerCapture(e.pointerId) } catch (x) { } sx = e.clientX - D.x; sy = e.clientY - D.y; on = true; moved = false; pc.classList.remove("ret"); pc.classList.add("drag") };
+            pc.onpointermove = function (e) { if (!on) return; D.x = e.clientX - sx; D.y = e.clientY - sy; if (Math.abs(D.x) + Math.abs(D.y) > 8) moved = true; pc.style.transform = "translate(" + D.x + "px," + D.y + "px) scale(1.12)"; var z = hit(e.clientX, e.clientY); zs.forEach(function (q) { q.classList.toggle("over", q === z) }) };
+            pc.onpointerup = function (e) { if (!on) return; on = false; clear(); if (!moved) { back(); onTap(); return } var z = hit(e.clientX, e.clientY); if (!(z && onDrop(z))) back() };
+            pc.onpointercancel = function () { on = false; clear(); back() };
         }
 
+        function setLang() { document.documentElement.lang = P.lang; document.documentElement.dir = P.lang == "ur" ? "rtl" : "ltr"; document.body.classList.toggle("ur", P.lang == "ur") }
         function menu() {
-            TK++; S = null; document.body.className = "t-menu";
-            var h = '<div class="ttl">Pick a game!</div><div class="tiles">';
-            G.forEach(function (g, i) {h += '<button class="tile" style="--c:' + g.c + '" data-g="' + i + '"><span class="te">' + g.e + '</span><span class="tx"><span class="tt">' + g.t + '</span><span class="ts">' + g.s + '</span></span></button>'});
-            h += '</div><div class="book"><b>My stickers</b><span>' + (owned.length ? owned.slice(-10).join(" ") : "Win games to collect them!") + '</span></div>';
+            TK++; S = null; setLang(); document.body.className = (P.lang == "ur" ? "ur " : "") + "t-menu"; msg(T("Hi! Let’s play!", "سلام! آؤ کھیلیں!"));
+            var h = '<div class="ttl">' + T("Pick a game!", "کھیل چنو!") + '</div><div class="tiles">';
+            G.forEach(function (g, i) { h += '<button class="tile" style="--c:' + g.c + ';--c2x:' + g.d + '" data-g="' + i + '"><span class="te">' + g.e + '</span><span class="tx"><span class="tt">' + T(g.t[0], g.t[1]) + '</span><span class="ts">' + T(g.s[0], g.s[1]) + '</span></span><span class="go">▶</span></button>' });
+            h += '</div><div class="book"><b>' + T("My stickers", "میرے اسٹکرز") + '</b><span>' + (P.owned.length ? P.owned.slice(-10).join(" ") : T("Win games to collect them!", "کھیل جیت کر جمع کرو!")) + '</span></div>';
+            h += '<div class="opts"><button id="lg">🌐 ' + (P.lang == "ur" ? "English" : "اردو") + '</button><button id="mu" class="' + (P.mus ? "" : "off") + '">🎵 ' + T("Music", "موسیقی") + '</button></div>';
             $("view").innerHTML = h; hud();
-            Array.prototype.forEach.call(document.querySelectorAll("[data-g]"), function (b) {b.onclick = function () {fx("ok"); start(+b.dataset.g)}});
+            Array.prototype.forEach.call(document.querySelectorAll("[data-g]"), function (b) { b.onclick = function () { fx("ok"); start(+b.dataset.g) } });
+            $("lg").onclick = function () { P.lang = P.lang == "ur" ? "en" : "ur"; save(); menu() };
+            $("mu").onclick = function () { P.mus = P.mus ? 0 : 1; save(); music(); menu() };
         }
-        function start(i) {S = {g: i, r: 0, wrong: 0, streak: 0}; document.body.className = G[i].th; msg("Let’s go!"); next()}
+        function start(i) { S = { g: i, r: 0, wrong: 0, streak: 0 }; document.body.className = (P.lang == "ur" ? "ur " : "") + G[i].th; msg(T("Let’s go!", "چلو شروع کریں!")); next() }
         function next() {
             if (S.r >= 5) return end();
             var tk = ++TK, q = G[S.g].make(), locked = false, tried = false, dots = "";
             for (var i = 0; i < 5; i++)dots += '<i class="' + (i < S.r ? "on" : "") + '">⭐</i>';
-            var h = '<div class="askrow"><div class="piece" id="pc">' + q.piece + '</div><div class="qt"><div class="pd">' + dots + '</div><div class="ask">' + q.ask + '</div><div class="hint">Drag me to the right place 👇</div></div><button class="mini" id="hear">🔊</button></div><div class="zones ' + q.lay + '" style="--n:' + q.zones.length + '">';
-            q.zones.forEach(function (z) {h += '<div class="zone ' + z.c + '" data-k="' + z.k + '">' + z.h + '</div>'});
+            var h = '<div class="askrow"><div class="piece" id="pc">' + q.piece + '</div><div class="qt"><div class="pd">' + dots + '</div><div class="ask">' + q.ask + '</div><div class="hint">' + T("Drag me to the right place 👇", "مجھے صحیح جگہ پر لے جاؤ 👇") + '</div></div><button class="mini" id="hear" aria-label="Listen">🔊</button></div><div class="zones ' + q.lay + '" style="--n:' + q.zones.length + '">';
+            q.zones.forEach(function (z) { h += '<div class="zone ' + z.c + '" data-k="' + z.k + '">' + z.h + '</div>' });
             $("view").innerHTML = h + '</div>';
-            var pc = $("pc"), zs = [].slice.call(document.querySelectorAll(".zone")), D = {x: 0, y: 0};
-            function hear() {if (q.hear) critter(q.hear); else talk(q.ask)}
+            var pc = $("pc"), zs = [].slice.call(document.querySelectorAll(".zone")), D = { x: 0, y: 0 };
+            function hear() { if (q.hear) { var a = q.hear; talk(T(a[3] + "! " + a[3] + "!", a[4] + "! " + a[4] + "!"), a[5], a[6]) } else talk(q.ask) }
             function answer(z) {
                 if (locked) return false;
                 if (z.dataset.k === q.ans) {
@@ -687,27 +1364,31 @@
                     var r = z.getBoundingClientRect(), p = pc.getBoundingClientRect();
                     pc.classList.remove("ret", "drag"); pc.classList.add("snap");
                     pc.style.transform = "translate(" + (r.left + r.width / 2 - (p.left + p.width / 2 - D.x)) + "px," + (r.top + r.height / 2 - (p.top + p.height / 2 - D.y)) + "px) scale(.8)"; D.x = D.y = 0;
-                    stars++; S.streak++; hud(); fx("ok"); burst(z, ["⭐", "🎉", "✨"]); hop();
-                    msg(S.streak >= 3 ? "🔥 " + S.streak + " in a row!" : pick(PR, 1)[0]); talk(q.win); S.r++;
-                    setTimeout(function () {if (tk === TK) next()}, 2300); return true;
+                    P.stars++; S.streak++; save(); hud(); fx("ok"); burst(z, ["⭐", "🎉", "✨"]); mood("happy");
+                    msg(S.streak >= 3 ? "🔥 " + S.streak + " " + T("in a row!", "لگاتار!") : T.apply(0, pick(PR, 1)[0])); talk(q.win); S.r++;
+                    setTimeout(function () { if (tk === TK) next() }, 2300); return true
                 }
-                if (!tried) {tried = true; S.wrong++} S.streak = 0;
+                if (!tried) { tried = true; S.wrong++ } S.streak = 0;
                 z.classList.remove("bad"); void z.offsetWidth; z.classList.add("bad");
-                fx("no"); msg("Oops! Try again 💪"); talk("Try again!"); return false;
+                fx("no"); mood("sad"); msg(T("Oops! Try again 💪", "اوہو! پھر کوشش کرو 💪")); talk(T("Try again!", "پھر کوشش کرو!")); return false
             }
             bindDrag(pc, zs, D, answer, hear);
-            zs.forEach(function (z) {z.onclick = function () {answer(z)}});
+            zs.forEach(function (z) { z.onclick = function () { answer(z) } });
             $("hear").onclick = hear;
-            talk(q.ask); if (q.hear) setTimeout(function () {if (tk === TK) hear()}, 1900);
+            talk(q.ask); if (q.hear) setTimeout(function () { if (tk === TK) hear() }, 2200);
         }
         function end() {
-            TK++; var st = S.wrong === 0 ? 3 : S.wrong <= 2 ? 2 : 1, pool = STK.filter(function (x) {return owned.indexOf(x) < 0}), s = pick(pool.length ? pool : STK, 1)[0];
-            if (owned.indexOf(s) < 0) owned.push(s);
-            var h = '<div class="endbox" id="eb"><div class="t">🏆</div><div class="ttl">' + ["", "Nice try!", "Well done!", "Perfect!"][st] + '</div><div class="s3">' + new Array(st + 1).join("⭐") + '<span class="dim">' + new Array(4 - st).join("⭐") + '</span></div><div class="ask">New sticker: <span class="stk">' + s + '</span></div></div><div class="row2"><button id="again">🔁 Play again</button><button id="menu2">🏠 Menu</button></div>';
-            $("view").innerHTML = h; msg("You won a sticker! " + s); fx("win"); burst($("eb"), ["🎉", "⭐", "✨", "🎊"]); hop(); talk(["", "Nice try!", "Well done!", "Perfect! You are amazing!"][st]);
-            var g = S.g; $("again").onclick = function () {start(g)}; $("menu2").onclick = menu;
+            TK++; var st = S.wrong === 0 ? 3 : S.wrong <= 2 ? 2 : 1, pool = STK.filter(function (x) { return P.owned.indexOf(x) < 0 }), s = pick(pool.length ? pool : STK, 1)[0];
+            if (P.owned.indexOf(s) < 0) P.owned.push(s); save();
+            var tt = [["", "", ""], ["Nice try!", "اچھی کوشش!"], ["Well done!", "شاباش!"], ["Perfect!", "بہت خوب!"]][st], g = S.g;
+            var h = '<div class="endbox" id="eb"><div class="t">🏆</div><div class="ttl">' + T(tt[0], tt[1]) + '</div><div class="s3">' + new Array(st + 1).join("⭐") + '<span class="dim">' + new Array(4 - st).join("⭐") + '</span></div><div class="ask">' + T("New sticker:", "نیا اسٹکر:") + ' <span class="stk">' + s + '</span></div></div><div class="row2"><button id="again">🔁 ' + T("Play again", "دوبارہ کھیلو") + '</button><button id="menu2">🏠 ' + T("Menu", "مینو") + '</button></div>';
+            $("view").innerHTML = h; msg(T("You won a sticker! ", "تم نے اسٹکر جیتا! ") + s); fx("win"); burst($("eb"), ["🎉", "⭐", "✨", "🎊"]); mood("happy"); talk(T(tt[0], tt[1]));
+            $("again").onclick = function () { start(g) }; $("menu2").onclick = menu;
         }
         $("home").onclick = menu;
+        $("mute").onclick = function () { P.snd = P.snd ? 0 : 1; save(); try { speechSynthesis.cancel() } catch (e) { } music(); hud() };
+        document.addEventListener("pointerdown", function f() { music(); document.removeEventListener("pointerdown", f) });
+        [["☁️", 8, 10], ["⭐", 80, 8], ["🌈", 12, 72], ["✨", 86, 60], ["☁️", 70, 86], ["🪐", 45, 4]].forEach(function (d, i) { var s = document.createElement("span"); s.className = "dc"; s.textContent = ["🦋", "🐝", "🌼", "🌻", "🐞", "🌷"][i]; s.style.left = d[1] + "%"; s.style.top = [14, 22, 82, 86, 88, 90][i] + "%"; s.style.animationDelay = (-i * 1.3) + "s"; $("bg").appendChild(s) });
         menu();
     </script>
 </body>
