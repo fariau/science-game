@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Animal and object pictures: Twemoji (c) Twitter, Inc and other contributors, CC-BY 4.0 (https://github.com/twitter/twemoji) -->
 <html lang="en">
 
 <head>
@@ -1273,6 +1274,892 @@
                 animation: none !important
             }
         }
+
+        /* Picture background */
+        #bg {
+            background: #9cc0f5 url(images/background.jpg) center/cover no-repeat
+        }
+
+        #bg::before,
+        #bg::after,
+        .dc {
+            display: none
+        }
+
+        /* Compact card sizes */
+        #app {
+            width: min(100%, 44rem);
+            gap: .7rem
+        }
+
+        #view {
+            justify-content: center;
+            gap: .9rem
+        }
+
+        .top {
+            padding: .35rem .7rem;
+            border-radius: 1.6rem
+        }
+
+        .fox {
+            width: 3rem;
+            height: 3rem;
+            font-size: 2rem
+        }
+
+        .say {
+            font-size: 1rem;
+            padding: .2rem .7rem
+        }
+
+        .stars {
+            font-size: 1.2rem
+        }
+
+        .hbtn {
+            width: 2.4rem;
+            height: 2.4rem;
+            font-size: 1.15rem
+        }
+
+        .ttl {
+            font-size: 1.9rem
+        }
+
+        .tiles {
+            flex: none;
+            grid-template-rows: none;
+            grid-auto-rows: minmax(0, 5.6rem);
+            gap: .8rem
+        }
+
+        .tile {
+            padding: .3rem 1.1rem;
+            border-radius: 1.6rem;
+            gap: .9rem
+        }
+
+        .te {
+            font-size: 2.3rem
+        }
+
+        .tt {
+            font-size: 1.3rem
+        }
+
+        .ts {
+            font-size: .95rem
+        }
+
+        .go {
+            width: 1.7rem;
+            height: 1.7rem;
+            font-size: .75rem
+        }
+
+        .opts button {
+            height: 2.5rem;
+            font-size: 1rem
+        }
+
+        .askrow {
+            padding: .45rem .8rem;
+            border-radius: 1.6rem;
+            gap: .8rem
+        }
+
+        .piece {
+            width: min(5rem, 11vh);
+            height: min(5rem, 11vh)
+        }
+
+        .piece .pe {
+            font-size: min(3rem, 6.5vh)
+        }
+
+        .ask {
+            font-size: 1.2rem
+        }
+
+        .hint {
+            font-size: .85rem
+        }
+
+        .mini {
+            height: 2.4rem;
+            font-size: 1.05rem
+        }
+
+        .zones {
+            flex: none;
+            gap: .6rem
+        }
+
+        .zones.rows {
+            grid-template-rows: repeat(var(--n), minmax(0, 6rem))
+        }
+
+        .zones.cols {
+            grid-template-rows: minmax(0, 10rem)
+        }
+
+        .zone {
+            border-radius: 1.5rem
+        }
+
+        .zl {
+            font-size: min(1.6rem, 4vh)
+        }
+
+        .zan {
+            font-size: min(3.8rem, 9vh)
+        }
+
+        .zn {
+            font-size: 1.15rem
+        }
+
+        .zd {
+            font-size: min(2.2rem, 5vh)
+        }
+
+        .endbox {
+            flex: none;
+            padding: 1.4rem 1rem;
+            border-radius: 1.6rem
+        }
+
+        .endbox .t {
+            font-size: min(4rem, 9vh)
+        }
+
+        .row2 button {
+            height: min(4.2rem, 10vh);
+            font-size: 1.2rem;
+            border-radius: 1.4rem
+        }
+
+        @media (max-aspect-ratio:5/4) {
+            .tiles {
+                grid-auto-rows: minmax(0, 5.2rem)
+            }
+
+            .zones.cols.n3 {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(3, minmax(0, 5.2rem))
+            }
+
+            .zones.cols.n3 .zan {
+                font-size: min(3rem, 7vh)
+            }
+        }
+
+        @media (min-aspect-ratio:5/4) {
+            .tiles {
+                grid-auto-rows: minmax(0, 9rem)
+            }
+
+            .tile {
+                padding: .8rem .6rem
+            }
+
+            .te {
+                font-size: 3.2rem
+            }
+        }
+
+        @media (max-height:560px) {
+            .zones.rows {
+                grid-template-rows: repeat(var(--n), minmax(0, 4.2rem))
+            }
+
+            .zones.cols {
+                grid-template-rows: minmax(0, 7rem)
+            }
+
+            .tiles {
+                grid-auto-rows: minmax(0, 5rem)
+            }
+        }
+
+        /* Wide-screen card sizes */
+        .zd {
+            justify-content: space-between;
+            padding: 0 1.2rem
+        }
+
+        .zd span:nth-child(2):not(:last-child) {
+            visibility: hidden
+        }
+
+        @media (min-aspect-ratio:5/4) {
+            .tiles {
+                grid-template-rows: none;
+                grid-auto-rows: minmax(0, min(13rem, 36vh))
+            }
+
+            .zones.rows {
+                grid-template-columns: repeat(var(--n), 1fr);
+                grid-template-rows: minmax(0, min(13rem, 36vh))
+            }
+
+            .zones.cols {
+                grid-template-rows: minmax(0, min(13rem, 36vh))
+            }
+
+            .zones.rows .zone {
+                gap: .5rem
+            }
+
+            .zd {
+                align-items: flex-start;
+                padding: .8rem 1rem
+            }
+        }
+
+        /* Zone pictures + outer cards */
+        .zone.zs {
+            background: #6ec6ff url(images/sky.jpg) 50% 40%/cover
+        }
+
+        .zone.zw {
+            background: #1c85c9 url(images/water.jpg) 50% 70%/cover
+        }
+
+        .zone.zg {
+            background: #4fb86a url(images/land.jpg) 50% 85%/cover
+        }
+
+        .zd {
+            display: none
+        }
+
+        .zl {
+            background: rgba(39, 50, 90, .62);
+            padding: .05rem 1rem;
+            border-radius: 1.2rem;
+            border: .12rem solid rgba(255, 255, 255, .75);
+            font-size: min(1.5rem, 4vh)
+        }
+
+        .top,
+        .askrow,
+        .opts button {
+            border-width: .15rem;
+            box-shadow: 0 .25rem 0 var(--ink)
+        }
+
+        .top {
+            border-radius: 1.4rem
+        }
+
+        .askrow {
+            border-radius: 1.5rem
+        }
+
+        .tile {
+            border-width: .15rem;
+            border-radius: 1.6rem;
+            box-shadow: 0 .35rem 0 var(--ink)
+        }
+
+        .tiles {
+            grid-auto-rows: minmax(0, 4.8rem)
+        }
+
+        .opts {
+            justify-content: center
+        }
+
+        .opts button {
+            flex: 0 1 12rem
+        }
+
+        @media (min-aspect-ratio:5/4) {
+            .tiles {
+                grid-template-columns: repeat(3, minmax(0, 12.5rem));
+                justify-content: center;
+                grid-auto-rows: minmax(0, min(12rem, 34vh))
+            }
+        }
+
+        /* Fill the whole page */
+        #app {
+            width: min(100%, 64rem)
+        }
+
+        #view {
+            justify-content: flex-start
+        }
+
+        .zones {
+            flex: 1;
+            min-height: 0
+        }
+
+        .zones.rows {
+            grid-template-rows: repeat(var(--n), minmax(0, 1fr))
+        }
+
+        .zones.cols {
+            grid-template-rows: minmax(0, 1fr)
+        }
+
+        .tiles {
+            flex: 1;
+            min-height: 0;
+            grid-template-rows: repeat(3, minmax(0, 1fr));
+            grid-auto-rows: auto
+        }
+
+        .endbox {
+            flex: 1;
+            min-height: 0
+        }
+
+        .askrow {
+            padding: .7rem 1.2rem;
+            gap: 1.1rem
+        }
+
+        .piece {
+            width: min(7rem, 15vh);
+            height: min(7rem, 15vh)
+        }
+
+        .piece .pe {
+            font-size: min(4.5rem, 9.5vh)
+        }
+
+        .ask {
+            font-size: 1.7rem
+        }
+
+        .hint {
+            font-size: 1rem
+        }
+
+        .pd i {
+            font-size: 1.5rem
+        }
+
+        .mini {
+            height: 3rem;
+            font-size: 1.3rem;
+            padding: .1rem 1.3rem
+        }
+
+        .zan {
+            font-size: min(6.5rem, 16vh)
+        }
+
+        .zn {
+            font-size: 1.6rem
+        }
+
+        .zl {
+            font-size: min(2.1rem, 5vh)
+        }
+
+        .te {
+            font-size: 3.6rem
+        }
+
+        .tt {
+            font-size: 1.6rem
+        }
+
+        .ts {
+            font-size: 1.1rem
+        }
+
+        @media (max-aspect-ratio:5/4) {
+            .zones.cols.n3 {
+                grid-template-rows: repeat(3, minmax(0, 1fr))
+            }
+
+            .zones.cols.n3 .zan {
+                font-size: min(4.5rem, 10vh)
+            }
+        }
+
+        @media (min-aspect-ratio:5/4) {
+            .tiles {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: minmax(0, 1fr);
+                grid-auto-rows: auto;
+                justify-content: stretch
+            }
+
+            .te {
+                font-size: min(5.5rem, 13vh)
+            }
+
+            .zones.rows,
+            .zones.cols {
+                grid-template-rows: minmax(0, 1fr)
+            }
+        }
+
+        .top .stars {
+            display: none
+        }
+
+        /* Inner cards square, outer cards rectangle */
+        .zones,
+        .tiles {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: .8rem;
+            container-type: size;
+            --g: .8rem
+        }
+
+        .tiles {
+            --n: 3
+        }
+
+        .zone,
+        .tile {
+            aspect-ratio: 1/1;
+            flex: none;
+            height: auto;
+            min-height: 0;
+            width: min(calc((100cqw - (var(--n, 3) - 1)*var(--g))/var(--n, 3)), 100cqh)
+        }
+
+        .zone {
+            border-radius: 1.2rem
+        }
+
+        .tile {
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            gap: .4rem;
+            padding: .6rem;
+            border-radius: 1.2rem
+        }
+
+        .tx {
+            align-items: center
+        }
+
+        .te {
+            font-size: min(4.5rem, 10vh)
+        }
+
+        .tt {
+            font-size: 1.3rem
+        }
+
+        .ts {
+            font-size: .9rem
+        }
+
+        .top,
+        .askrow {
+            border-radius: .9rem
+        }
+
+        @media (max-aspect-ratio:5/4) {
+
+            .zones.rows,
+            .zones.cols.n3,
+            .tiles {
+                flex-direction: column
+            }
+
+            .zone,
+            .tile {
+                width: min(100cqw, calc((100cqh - (var(--n, 3) - 1)*var(--g))/var(--n, 3)))
+            }
+
+            .zones.cols.n3 .za {
+                flex-direction: column;
+                gap: .2rem
+            }
+
+            .zones.cols.n2 {
+                flex-direction: row
+            }
+
+            .zones.cols.n2 .zone {
+                width: min(calc((100cqw - var(--g))/2), 100cqh)
+            }
+        }
+
+        .pd {
+            display: none
+        }
+
+        /* Menu cards always in one even row */
+        .tiles {
+            flex-direction: row;
+            --s: min(calc((100cqw - 2*var(--g))/3), 100cqh)
+        }
+
+        .zones {
+            --s: min(calc((100cqw - (var(--n, 3) - 1)*var(--g))/var(--n, 3)), 100cqh)
+        }
+
+        .tile,
+        .zone {
+            width: var(--s);
+            height: var(--s);
+            aspect-ratio: auto;
+            min-width: 0;
+            min-height: 0
+        }
+
+        @media (max-aspect-ratio:5/4) {
+            .tiles {
+                flex-direction: row
+            }
+
+            .zones.rows,
+            .zones.cols.n3 {
+                --s: min(100cqw, calc((100cqh - (var(--n, 3) - 1)*var(--g))/var(--n, 3)))
+            }
+
+            .zones.cols.n2 {
+                --s: min(calc((100cqw - var(--g))/2), 100cqh)
+            }
+
+            .tile {
+                padding: .3rem
+            }
+
+            .tile .ts {
+                display: none
+            }
+
+            .tt {
+                font-size: min(1.1rem, 3.4vw)
+            }
+
+            .te {
+                font-size: min(3rem, 9vw)
+            }
+
+            .go {
+                display: none
+            }
+        }
+
+        /* Menu: wide rectangle cards, each laid out as a row */
+        .tiles {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: .9rem
+        }
+
+        .tiles .tile {
+            width: min(100%, 44rem);
+            height: min(7.5rem, calc((100cqh - 2*var(--g))/3));
+            flex-direction: row;
+            justify-content: flex-start;
+            text-align: start;
+            gap: 1.2rem;
+            padding: .4rem 1.4rem;
+            border-radius: 1.2rem
+        }
+
+        .tiles .tx {
+            align-items: flex-start
+        }
+
+        .tiles .te {
+            font-size: min(3.6rem, calc(7.5rem*.5))
+        }
+
+        .tiles .tt {
+            font-size: 1.6rem
+        }
+
+        .tiles .tile .ts {
+            display: block;
+            font-size: 1.05rem
+        }
+
+        .tiles .go {
+            display: grid;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2.2rem;
+            height: 2.2rem;
+            font-size: .9rem
+        }
+
+        .tiles .go {
+            display: none
+        }
+
+        .tiles .te {
+            display: none
+        }
+
+        .tiles .tile {
+            justify-content: center;
+            text-align: center
+        }
+
+        .tiles .tx {
+            align-items: center
+        }
+
+        .tiles .tt {
+            font-size: 2rem
+        }
+
+        .tiles .tile .ts {
+            font-size: 1.2rem
+        }
+
+        /* Zone cards: text only, bigger, in one row */
+        .zl {
+            background: none;
+            border: 0;
+            padding: 0;
+            color: #fff;
+            font-size: min(2.6rem, 7vw, 7vh);
+            letter-spacing: .02em;
+            text-shadow: 0 .15rem 0 var(--ink), .12rem 0 0 var(--ink), -.12rem 0 0 var(--ink), 0 -.12rem 0 var(--ink), .1rem .12rem 0 var(--ink), -.1rem .12rem 0 var(--ink)
+        }
+
+        @media (max-aspect-ratio:5/4) {
+
+            .zones.rows,
+            .zones.cols.n3 {
+                flex-direction: row;
+                --s: min(calc((100cqw - (var(--n, 3) - 1)*var(--g))/var(--n, 3)), 100cqh)
+            }
+
+            .zones.cols.n3 .za {
+                flex-direction: column
+            }
+
+            .zones.cols.n3 .zan {
+                font-size: min(4rem, 10vw)
+            }
+
+            .zones.cols.n3 .zn {
+                font-size: min(1.2rem, 3.4vw)
+            }
+        }
+
+        /* Responsive: phones, tablets, laptops */
+        html,
+        body {
+            height: 100dvh
+        }
+
+        .hbtn {
+            width: max(2.4rem, 44px);
+            height: max(2.4rem, 44px)
+        }
+
+        .mini {
+            min-height: 44px;
+            min-width: 44px
+        }
+
+        .tile,
+        .endbox {
+            overflow: hidden
+        }
+
+        .tiles .tt,
+        .tiles .ts {
+            overflow-wrap: anywhere
+        }
+
+        @media (max-width:380px) {
+            .say {
+                font-size: .9rem
+            }
+
+            .top {
+                gap: .4rem;
+                padding: .3rem .5rem
+            }
+
+            .askrow {
+                padding: .5rem .7rem;
+                gap: .7rem
+            }
+
+            .ask {
+                font-size: 1.35rem
+            }
+
+            .hint {
+                display: none
+            }
+
+            .tiles .tt {
+                font-size: 1.6rem
+            }
+
+            .tiles .tile .ts {
+                font-size: 1rem
+            }
+        }
+
+        @media (max-height:480px) {
+            .hint {
+                display: none
+            }
+
+            .piece {
+                width: min(4.5rem, 18vh);
+                height: min(4.5rem, 18vh)
+            }
+
+            .ask {
+                font-size: 1.25rem
+            }
+
+            .askrow {
+                padding: .35rem .8rem
+            }
+
+            .endbox .t {
+                font-size: 2.5rem
+            }
+
+            .endbox .ttl,
+            .ttl {
+                font-size: 1.5rem
+            }
+
+            .s3 {
+                font-size: 1.6rem
+            }
+
+            .row2 button {
+                height: 3rem
+            }
+
+            .tiles .tt {
+                font-size: 1.5rem
+            }
+
+            .tiles .tile .ts {
+                font-size: .95rem
+            }
+
+            .top {
+                padding: .25rem .6rem
+            }
+
+            .fox {
+                width: 2.6rem;
+                height: 2.6rem;
+                font-size: 1.7rem
+            }
+        }
+
+        @media (max-height:340px) {
+            #app {
+                padding: .4rem;
+                gap: .4rem
+            }
+
+            .say {
+                display: none
+            }
+
+            .tiles .tile .ts {
+                display: none
+            }
+        }
+
+        /* Real pictures: animals + hot/cold zones */
+        .piece .ai {
+            width: 82%;
+            height: 82%;
+            object-fit: contain;
+            pointer-events: none;
+            -webkit-user-drag: none
+        }
+
+        .zone .ai {
+            width: 68%;
+            height: 58%;
+            object-fit: contain;
+            pointer-events: none;
+            -webkit-user-drag: none
+        }
+
+        .zones.cols.n3 .za .ai {
+            width: min(60%, 6rem);
+            height: auto;
+            max-height: 62%
+        }
+
+        .zone.zh {
+            background: url(images/hot.jpg) center/cover, url(images/hot.jpeg) center/cover, url(images/hot.png) center/cover, url(images/hot.webp) center/cover, url(images/hot.svg) center/cover, url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSIgeG1sbnM6YzJwYT0iaHR0cDovL2MycGEub3JnL21hbmlmZXN0Ij48bWV0YWRhdGE+PGMycGE6bWFuaWZlc3Q+QUFBV2dtcDFiV0lBQUFBZWFuVnRaR015Y0dFQUVRQVFnQUFBcWdBNG0zRURZekp3WVFBQUFCWmNhblZ0WWdBQUFFZHFkVzFrWXpKdFlRQVJBQkNBQUFDcUFEaWJjUU4xY200Nll6SndZVHBqTWpObVlqVTJZeTFtT0RGaExUUmhNMlV0WVRWbFl5MHpNR0ptWVRWbU5EWmlPR0lBQUFBRGwycDFiV0lBQUFBcGFuVnRaR015WVhNQUVRQVFnQUFBcWdBNG0zRURZekp3WVM1aGMzTmxjblJwYjI1ekFBQUFBTHhxZFcxaUFBQUFSR3AxYldSalltOXlBQkVBRUlBQUFLb0FPSnR4RTJNeWNHRXVhVzVuY21Wa2FXVnVkQzUyTXdBQUFBQVlZekp6YUhwNVY0ZmhJTXIraHhDYjVjSTE4ZE1BQUFCd1kySnZjcU5wWkdNNlptOXliV0YwYldsdFlXZGxMM04yWnl0NGJXeHFhVzV6ZEdGdVkyVkpSSGdzZUcxd09tbHBaRG93TlRneU16VmxNeTFpTmpneUxUUm1OREV0T0dGbVl5MWxZelJsTURkaFpESTFPVGxzY21Wc1lYUnBiMjV6YUdsd2FIQmhjbVZ1ZEU5bUFBQUI0bXAxYldJQUFBQkJhblZ0WkdOaWIzSUFFUUFRZ0FBQXFnQTRtM0VUWXpKd1lTNWhZM1JwYjI1ekxuWXlBQUFBQUJoak1uTm9FR2VDWmhFWEg4OE5jRStlR2NZU3ZnQUFBWmxqWW05eW9tZGhZM1JwYjI1emdxSm1ZV04wYVc5dWEyTXljR0V1YjNCbGJtVmthbkJoY21GdFpYUmxjbk9oYTJsdVozSmxaR2xsYm5SemdhSmpkWEpzZUMxelpXeG1JMnAxYldKbVBXTXljR0V1WVhOelpYSjBhVzl1Y3k5ak1uQmhMbWx1WjNKbFpHbGxiblF1ZGpOa2FHRnphRmdnV1pZOE9mNkgzUTNJQUxEL3k0dEpMaTI5cjQrM29oRU4wQ2ZuQjRBaHhqV2tabUZqZEdsdmJuZ2RZMjl0TG1GdWRHaHliM0JwWXk1amJHRjFaR1V1Y0hKdmRtbGtaV1JxY0dGeVlXMWxkR1Z5YzZGNEgyTnZiUzVoYm5Sb2NtOXdhV011YjNKcFoybHVMV052Ym1acFpHVnVZMlZuZFc1cmJtOTNibXRrWlhOamNtbHdkR2x2Ym5obVEyeGhkV1JsSUhCeWIzWnBaR1ZrSUhSb2FYTWdabWxzWlNCaGRDQjBhR1VnY21WeGRXVnpkQ0J2WmlCaElIVnpaWElnWVc1a0lHMWhlU0JvWVhabElHTnlaV0YwWldRZ2IzSWdiVzlrYVdacFpXUWdkR2hsSUdacGJHVWdZMjl1ZEdWdWRITXViWE52Wm5SM1lYSmxRV2RsYm5TaFpHNWhiV1ZtUTJ4aGRXUmxjbUZzYkVGamRHbHZibk5KYm1Oc2RXUmxaUFVBQUFESWFuVnRZZ0FBQUVCcWRXMWtZMkp2Y2dBUkFCQ0FBQUNxQURpYmNSTmpNbkJoTG1oaGMyZ3VaR0YwWVFBQUFBQVlZekp6YUJUd1VMTWtYQ2JlUklydGFDeXN0TE1BQUFDQVkySnZjcVZqWVd4blpuTm9ZVEkxTm1Od1lXUk5BQUFBQUFBQUFBQUFBQUFBQUdSb1lYTm9XQ0FrODdSY2pYODRKZ3FvZDdkZVp2aWFPcHZUbGZyUy85WVp4dFpMYjE5ajRtUnVZVzFsYm1wMWJXSm1JRzFoYm1sbVpYTjBhbVY0WTJ4MWMybHZibk9Cb21WemRHRnlkQmlpWm14bGJtZDBhQmtlQkFBQUFqNXFkVzFpQUFBQUoycDFiV1JqTW1Oc0FCRUFFSUFBQUtvQU9KdHhBMk15Y0dFdVkyeGhhVzB1ZGpJQUFBQUNEMk5pYjNLbFkyRnNaMlp6YUdFeU5UWnBjMmxuYm1GMGRYSmxlRTF6Wld4bUkycDFiV0ptUFM5ak1uQmhMM1Z5Ympwak1uQmhPbU15TTJaaU5UWmpMV1k0TVdFdE5HRXpaUzFoTldWakxUTXdZbVpoTldZME5tSTRZaTlqTW5CaExuTnBaMjVoZEhWeVpXcHBibk4wWVc1alpVbEVlQ3g0YlhBNmFXbGtPbU01WW1ZMk9UWTRMV000WTJZdE5HSmtZaTFoTjJJekxXSmpOekEwTXpJM1pEWTNZbkpqY21WaGRHVmtYMkZ6YzJWeWRHbHZibk9Eb21OMWNteDRMWE5sYkdZamFuVnRZbVk5WXpKd1lTNWhjM05sY25ScGIyNXpMMk15Y0dFdWFXNW5jbVZrYVdWdWRDNTJNMlJvWVhOb1dDQlpsanc1L29mZERjZ0FzUC9MaTBrdUxiMnZqN2VpRVEzUUorY0hnQ0hHTmFKamRYSnNlQ3B6Wld4bUkycDFiV0ptUFdNeWNHRXVZWE56WlhKMGFXOXVjeTlqTW5CaExtRmpkR2x2Ym5NdWRqSmthR0Z6YUZnZ0d2VzVsVG1wS1NzTDY4eVJpTmZwV3JjT01MREdrYitNUGtidWJFZG4xQ1NpWTNWeWJIZ3BjMlZzWmlOcWRXMWlaajFqTW5CaExtRnpjMlZ5ZEdsdmJuTXZZekp3WVM1b1lYTm9MbVJoZEdGa2FHRnphRmdna3NPdlVwNGNXN0dXNXM1VDBBNFNqSXZzSHBsbFl6YkNmaE1RUlBSbVVEUjBZMnhoYVcxZloyVnVaWEpoZEc5eVgybHVabStqWkc1aGJXVnZRVzUwYUhKdmNHbGpJRVpwYkdWelozWmxjbk5wYjI1bE1TNHdMakJyYzNCbFkxWmxjbk5wYjI1bE1pNDBMakFBQUJBNGFuVnRZZ0FBQUNocWRXMWtZekpqY3dBUkFCQ0FBQUNxQURpYmNRTmpNbkJoTG5OcFoyNWhkSFZ5WlFBQUFCQUlZMkp2Y3RLRVdRSVNvZ0VtR0NGWkFnb3dnZ0lHTUlJQmphQURBZ0VDQWhSQTVhQUs3c0k1MEw2NGcvb0dRZ1U5WjFVVEFEQUtCZ2dxaGtqT1BRUURBekJKTVJjd0ZRWURWUVFLRXc1QmJuUm9jbTl3YVdNc0lGQkNRekV1TUN3R0ExVUVBeE1sUVc1MGFISnZjR2xqSUVOdmJuUmxiblFnUTNKbFpHVnVkR2xoYkhNZ1VtOXZkQ0JEUVRBZUZ3MHlOakE0TURjeE9EUXpOVFphRncweU9EQTRNRFl4T1RRek5UWmFNRVF4RnpBVkJnTlZCQW9URGtGdWRHaHliM0JwWXl3Z1VFSkRNU2t3SndZRFZRUURFeUJCYm5Sb2NtOXdhV01nUTJ4aGRXUmxJRU52Ym5SbGJuUWdVMmxuYm1sdVp6QlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJKaDZDbXZMVUJnRkZOVTB2VUtsT1Z0RTZkamQxN0w1U3V3WDBMZW1GaXNCTTNka2QvM2N5anhGQTNRbzVTNDZmWDAvaWhZMFZaN21mYjlLRjcwM3Q1T2pXREJXTUE0R0ExVWREd0VCL3dRRUF3SUhnREFWQmdOVkhTVUVEakFNQmdvckJnRUVBWVBvWGdJQk1Bd0dBMVVkRXdFQi93UUNNQUF3SHdZRFZSMGpCQmd3Rm9BVXpsSGlCSUZPWkZzaitPUEV6NW8rbk1IWFhNSXdDZ1lJS29aSXpqMEVBd01EWndBd1pBSXdNWE1kRko0QmV0TExWWTdPUnVFOW5vcWJiQVpPWm4vYUFyWHlUd0ZBWmZLclB6eEYydlBvSk5mMStVQ2RnMVhHQWpCd1gxemQ5V0dxWWtxbUw1U0ZxdzFReVNqcjF6SmZwSk05KzFyZER3U1BMTU9QT2pLdWlYam9VL3BVVWVHOVJ3bWhZM0JoWkZrTm5nQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUFpZUUNFd0VJSFBXME9OTDRwWVc3VzFRLzRzbUhDdkYxa3Y5SGw2c0RYM3kyd2pSRGo4bTZmNlg0a2JiM3NXclc4R1RWZ1hvMGFkeEdTMFVGWkhSYXIvaHZrPTwvYzJwYTptYW5pZmVzdD48L21ldGFkYXRhPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmYjM0NyIvPjxzdG9wIG9mZnNldD0iLjYiIHN0b3AtY29sb3I9IiNmZjdhNDUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZjVkNWQiLz48L2xpbmVhckdyYWRpZW50PjxyYWRpYWxHcmFkaWVudCBpZD0icyI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZmYmQwIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZTE0ZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmZTE0ZCIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjQwMCIgaGVpZ2h0PSI0MDAiIGZpbGw9InVybCgjZykiLz48Y2lyY2xlIGN4PSIyODAiIGN5PSIxMTAiIHI9IjE1MCIgZmlsbD0idXJsKCNzKSIvPjxjaXJjbGUgY3g9IjI4MCIgY3k9IjExMCIgcj0iNTIiIGZpbGw9IiNmZmYzYTAiLz48cGF0aCBkPSJNMCAyOTAgUTEwMCAyNDAgMjAwIDI4MCBUNDAwIDI2MiBWNDAwIEgwWiIgZmlsbD0iI2Y0YTI0YSIvPjxwYXRoIGQ9Ik0wIDMzNSBRMTIwIDI5NSAyNDAgMzMwIFQ0MDAgMzE1IFY0MDAgSDBaIiBmaWxsPSIjZTA4OTNhIi8+PGcgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utb3BhY2l0eT0iLjM1IiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+PHBhdGggZD0iTTYwIDIzMHExMC0xMiAyMCAwdDIwIDAiLz48cGF0aCBkPSJNMTUwIDIwNXExMC0xMiAyMCAwdDIwIDAiLz48cGF0aCBkPSJNNDAgMTgwcTEwLTEyIDIwIDB0MjAgMCIvPjwvZz48L3N2Zz4K) center/cover, #ff8a4d
+        }
+
+        .zone.zc {
+            background: url(images/cold.jpg) center/cover, url(images/cold.jpeg) center/cover, url(images/cold.png) center/cover, url(images/cold.webp) center/cover, url(images/cold.svg) center/cover, url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNDAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBzbGljZSIgeG1sbnM6YzJwYT0iaHR0cDovL2MycGEub3JnL21hbmlmZXN0Ij48bWV0YWRhdGE+PGMycGE6bWFuaWZlc3Q+QUFBV2dtcDFiV0lBQUFBZWFuVnRaR015Y0dFQUVRQVFnQUFBcWdBNG0zRURZekp3WVFBQUFCWmNhblZ0WWdBQUFFZHFkVzFrWXpKdFlRQVJBQkNBQUFDcUFEaWJjUU4xY200Nll6SndZVG8yTmpOa09EZGxZaTFsTmpFeUxUUmhNVGd0T0ROaU1pMWxaVEZpTUdNNFltTXpPRGtBQUFBRGwycDFiV0lBQUFBcGFuVnRaR015WVhNQUVRQVFnQUFBcWdBNG0zRURZekp3WVM1aGMzTmxjblJwYjI1ekFBQUFBTHhxZFcxaUFBQUFSR3AxYldSalltOXlBQkVBRUlBQUFLb0FPSnR4RTJNeWNHRXVhVzVuY21Wa2FXVnVkQzUyTXdBQUFBQVlZekp6YUIzSVkrSVc2L0dMbFJMN2x4ZXdGd2NBQUFCd1kySnZjcU5wWkdNNlptOXliV0YwYldsdFlXZGxMM04yWnl0NGJXeHFhVzV6ZEdGdVkyVkpSSGdzZUcxd09tbHBaRG8wWXpCak1URmpaQzAyTW1WaUxUUmtPVE10WVRWak5DMWpNamRqTnpObU5EZ3lZVGhzY21Wc1lYUnBiMjV6YUdsd2FIQmhjbVZ1ZEU5bUFBQUI0bXAxYldJQUFBQkJhblZ0WkdOaWIzSUFFUUFRZ0FBQXFnQTRtM0VUWXpKd1lTNWhZM1JwYjI1ekxuWXlBQUFBQUJoak1uTm8xdEh5KzU4YWxjMUhmbjg2UUxXL2VBQUFBWmxqWW05eW9tZGhZM1JwYjI1emdxSm1ZV04wYVc5dWEyTXljR0V1YjNCbGJtVmthbkJoY21GdFpYUmxjbk9oYTJsdVozSmxaR2xsYm5SemdhSmpkWEpzZUMxelpXeG1JMnAxYldKbVBXTXljR0V1WVhOelpYSjBhVzl1Y3k5ak1uQmhMbWx1WjNKbFpHbGxiblF1ZGpOa2FHRnphRmdncUdFY3NUYjB4TkkzZnI2NWZsVjV5dnBXeDA4Y3I2b0Y0UXVhZ1Z1R1FFaWtabUZqZEdsdmJuZ2RZMjl0TG1GdWRHaHliM0JwWXk1amJHRjFaR1V1Y0hKdmRtbGtaV1JxY0dGeVlXMWxkR1Z5YzZGNEgyTnZiUzVoYm5Sb2NtOXdhV011YjNKcFoybHVMV052Ym1acFpHVnVZMlZuZFc1cmJtOTNibXRrWlhOamNtbHdkR2x2Ym5obVEyeGhkV1JsSUhCeWIzWnBaR1ZrSUhSb2FYTWdabWxzWlNCaGRDQjBhR1VnY21WeGRXVnpkQ0J2WmlCaElIVnpaWElnWVc1a0lHMWhlU0JvWVhabElHTnlaV0YwWldRZ2IzSWdiVzlrYVdacFpXUWdkR2hsSUdacGJHVWdZMjl1ZEdWdWRITXViWE52Wm5SM1lYSmxRV2RsYm5TaFpHNWhiV1ZtUTJ4aGRXUmxjbUZzYkVGamRHbHZibk5KYm1Oc2RXUmxaUFVBQUFESWFuVnRZZ0FBQUVCcWRXMWtZMkp2Y2dBUkFCQ0FBQUNxQURpYmNSTmpNbkJoTG1oaGMyZ3VaR0YwWVFBQUFBQVlZekp6YU41V1BIRndDRWRlUWF1ZDRlN1FzMjhBQUFDQVkySnZjcVZqWVd4blpuTm9ZVEkxTm1Od1lXUk5BQUFBQUFBQUFBQUFBQUFBQUdSb1lYTm9XQ0R6ellXVUd2M0k3RUw0dWxHQXlOVWV2VjhMMXBFVkR6K1RVRVZlR05hT0ptUnVZVzFsYm1wMWJXSm1JRzFoYm1sbVpYTjBhbVY0WTJ4MWMybHZibk9Cb21WemRHRnlkQmlpWm14bGJtZDBhQmtlQkFBQUFqNXFkVzFpQUFBQUoycDFiV1JqTW1Oc0FCRUFFSUFBQUtvQU9KdHhBMk15Y0dFdVkyeGhhVzB1ZGpJQUFBQUNEMk5pYjNLbFkyRnNaMlp6YUdFeU5UWnBjMmxuYm1GMGRYSmxlRTF6Wld4bUkycDFiV0ptUFM5ak1uQmhMM1Z5Ympwak1uQmhPalkyTTJRNE4yVmlMV1UyTVRJdE5HRXhPQzA0TTJJeUxXVmxNV0l3WXpoaVl6TTRPUzlqTW5CaExuTnBaMjVoZEhWeVpXcHBibk4wWVc1alpVbEVlQ3g0YlhBNmFXbGtPbVZrWlRnME56a3pMVFpoT0dFdE5HRXhNUzA1WW1NNUxXWmhaV1ppWkRReFpEY3dNbkpqY21WaGRHVmtYMkZ6YzJWeWRHbHZibk9Eb21OMWNteDRMWE5sYkdZamFuVnRZbVk5WXpKd1lTNWhjM05sY25ScGIyNXpMMk15Y0dFdWFXNW5jbVZrYVdWdWRDNTJNMlJvWVhOb1dDQ29ZUnl4TnZURTBqZCt2cmwrVlhuSytsYkhUeHl2cWdYaEM1cUJXNFpBU0tKamRYSnNlQ3B6Wld4bUkycDFiV0ptUFdNeWNHRXVZWE56WlhKMGFXOXVjeTlqTW5CaExtRmpkR2x2Ym5NdWRqSmthR0Z6YUZnZ0FwKzRGcnM5RDJNcjgrN0l4d1NhMDB3aFU1U0dUWHhlVWEwYzlxaGFDV09pWTNWeWJIZ3BjMlZzWmlOcWRXMWlaajFqTW5CaExtRnpjMlZ5ZEdsdmJuTXZZekp3WVM1b1lYTm9MbVJoZEdGa2FHRnphRmdnbHZaVWFPNDBZZ1E4M1hnMXowSlJPYzFlZFdVblI0ZXF4YUxYYXliOG1ESjBZMnhoYVcxZloyVnVaWEpoZEc5eVgybHVabStqWkc1aGJXVnZRVzUwYUhKdmNHbGpJRVpwYkdWelozWmxjbk5wYjI1bE1TNHdMakJyYzNCbFkxWmxjbk5wYjI1bE1pNDBMakFBQUJBNGFuVnRZZ0FBQUNocWRXMWtZekpqY3dBUkFCQ0FBQUNxQURpYmNRTmpNbkJoTG5OcFoyNWhkSFZ5WlFBQUFCQUlZMkp2Y3RLRVdRSVNvZ0VtR0NGWkFnb3dnZ0lHTUlJQmphQURBZ0VDQWhSQTVhQUs3c0k1MEw2NGcvb0dRZ1U5WjFVVEFEQUtCZ2dxaGtqT1BRUURBekJKTVJjd0ZRWURWUVFLRXc1QmJuUm9jbTl3YVdNc0lGQkNRekV1TUN3R0ExVUVBeE1sUVc1MGFISnZjR2xqSUVOdmJuUmxiblFnUTNKbFpHVnVkR2xoYkhNZ1VtOXZkQ0JEUVRBZUZ3MHlOakE0TURjeE9EUXpOVFphRncweU9EQTRNRFl4T1RRek5UWmFNRVF4RnpBVkJnTlZCQW9URGtGdWRHaHliM0JwWXl3Z1VFSkRNU2t3SndZRFZRUURFeUJCYm5Sb2NtOXdhV01nUTJ4aGRXUmxJRU52Ym5SbGJuUWdVMmxuYm1sdVp6QlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJKaDZDbXZMVUJnRkZOVTB2VUtsT1Z0RTZkamQxN0w1U3V3WDBMZW1GaXNCTTNka2QvM2N5anhGQTNRbzVTNDZmWDAvaWhZMFZaN21mYjlLRjcwM3Q1T2pXREJXTUE0R0ExVWREd0VCL3dRRUF3SUhnREFWQmdOVkhTVUVEakFNQmdvckJnRUVBWVBvWGdJQk1Bd0dBMVVkRXdFQi93UUNNQUF3SHdZRFZSMGpCQmd3Rm9BVXpsSGlCSUZPWkZzaitPUEV6NW8rbk1IWFhNSXdDZ1lJS29aSXpqMEVBd01EWndBd1pBSXdNWE1kRko0QmV0TExWWTdPUnVFOW5vcWJiQVpPWm4vYUFyWHlUd0ZBWmZLclB6eEYydlBvSk5mMStVQ2RnMVhHQWpCd1gxemQ5V0dxWWtxbUw1U0ZxdzFReVNqcjF6SmZwSk05KzFyZER3U1BMTU9QT2pLdWlYam9VL3BVVWVHOVJ3bWhZM0JoWkZrTm5nQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUFpZUU9BcWdYMTJqZDBwemVzWkM1R1A3QVM0QkM2VEJPZHpoL1dZclY1SkdKR0VhWnpVVEYvV0dYbG56L29SL0pSa3cxODErSGEvc2dGcEpWYVpRNFlnSjEwPTwvYzJwYTptYW5pZmVzdD48L21ldGFkYXRhPjxkZWZzPjxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzZmYzNmZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2U2ZjZmZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiBmaWxsPSJ1cmwoI2cpIi8+PGcgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIuODUiPjxjaXJjbGUgY3g9IjUwIiBjeT0iNjAiIHI9IjUiLz48Y2lyY2xlIGN4PSIxNDAiIGN5PSIxMTAiIHI9IjQiLz48Y2lyY2xlIGN4PSIyMzAiIGN5PSI1MCIgcj0iNiIvPjxjaXJjbGUgY3g9IjMyMCIgY3k9IjEyMCIgcj0iNCIvPjxjaXJjbGUgY3g9IjM2MCIgY3k9IjQwIiByPSI1Ii8+PGNpcmNsZSBjeD0iOTAiIGN5PSIxNzAiIHI9IjMiLz48Y2lyY2xlIGN4PSIyNzAiIGN5PSIxOTAiIHI9IjQiLz48Y2lyY2xlIGN4PSIxOTAiIGN5PSIxNTAiIHI9IjMiLz48L2c+PHBhdGggZD0iTTAgMjgwIFExMTAgMjMwIDIyMCAyNzUgVDQwMCAyNTUgVjQwMCBIMFoiIGZpbGw9IiNlYWY2ZmYiLz48ZyBmaWxsPSIjMmY4ZjZiIj48cGF0aCBkPSJNNzAgMjg1bDI4LTYwIDI4IDYweiIvPjxwYXRoIGQ9Ik0yOTAgMjc1bDIyLTQ4IDIyIDQ4eiIvPjwvZz48ZyBmaWxsPSIjZmZmIj48cGF0aCBkPSJNODQgMjQzbDE0LTE4IDE0IDE4eiIvPjxwYXRoIGQ9Ik0zMDIgMjQ0bDEwLTE3IDEwIDE3eiIvPjwvZz48cGF0aCBkPSJNMCAzMzUgUTEyMCAyOTUgMjQwIDMzMCBUNDAwIDMxNSBWNDAwIEgwWiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPgo=) center/cover, #5aa9ff
+        }
+
+        /* Bigger animal pictures */
+        .piece {
+            width: min(9rem, 18vh);
+            height: min(9rem, 18vh)
+        }
+
+        .piece .ai {
+            width: 90%;
+            height: 90%
+        }
+
+        .zone .ai {
+            width: 78%;
+            height: 66%
+        }
+
+        .zones.cols.n3 .za .ai {
+            width: 78%;
+            height: auto;
+            max-height: 64%
+        }
+
+        @media (max-width:480px) {
+            .ask {
+                font-size: 1.3rem
+            }
+
+            .piece {
+                width: 5.5rem;
+                height: 5.5rem
+            }
+
+            .askrow {
+                gap: .7rem
+            }
+        }
+
+        @media (max-aspect-ratio:13/20) {
+
+            .zones.rows,
+            .zones.cols.n3 {
+                flex-direction: column;
+                --s: min(100cqw, calc((100cqh - 2*var(--g))/3))
+            }
+
+            .zones.cols.n2 {
+                flex-direction: column;
+                --s: min(100cqw, calc((100cqh - var(--g))/2))
+            }
+        }
     </style>
 </head>
 
@@ -1297,6 +2184,7 @@
         var $ = function (i) { return document.getElementById(i) };
         function T(en, ur) { return P.lang == "ur" ? ur : en }
         function nm(a) { return T(a[1], a[2]) }
+        function AN(a, c) { return '<img class="ai" src="images/animals/' + a[1].replace(/ /g, "-") + '.svg" alt="" draggable="false" data-e="' + a[0] + '" data-c="' + c + '" onerror="var s=document.createElement(\'span\');s.className=this.dataset.c;s.textContent=this.dataset.e;this.replaceWith(s)">' }
         function pick(a, n) { return a.slice().sort(function () { return Math.random() - .5 }).slice(0, n) }
         function draw(k, a) { if (!DK[k] || !DK[k].length) DK[k] = pick(a, a.length); return DK[k].pop() }
         function talk(t, p, r) { if (!P.snd) return; try { speechSynthesis.cancel(); var u = new SpeechSynthesisUtterance(t); u.lang = P.lang == "ur" ? "ur-PK" : "en-US"; u.pitch = p || 1.15; u.rate = r || .9; speechSynthesis.speak(u) } catch (e) { } }
@@ -1317,11 +2205,11 @@
         var TMP = [["☃️", "snowman", "برف کا آدمی", "cold"], ["🔥", "fire", "آگ", "hot"], ["🍦", "ice cream", "آئس کریم", "cold"], ["☀️", "sun", "سورج", "hot"], ["🧊", "ice", "برف", "cold"], ["☕", "hot tea", "گرم چائے", "hot"], ["🐧", "penguin", "پینگوئن", "cold"], ["🌋", "volcano", "آتش فشاں", "hot"]];
         var STK = ["🦄", "🐉", "🚀", "🌈", "🍭", "🎈", "🦖", "🐳", "🦋", "🐼", "🦁", "🐸", "🐙", "🍉", "🎨", "🛸"];
         var PR = [["Great job! 🎉", "شاباش! 🎉"], ["Super! ⭐", "زبردست! ⭐"], ["You’re a star!", "تم ستارے ہو!"], ["Awesome! 🌟", "کمال! 🌟"], ["Yay! Well done!", "واہ! بہت خوب!"]];
-        function Z(k) { var d = { sky: ["zs", "☁️", "☁️ Sky", "☁️ آسمان"], land: ["zg", "🌳", "🌳 Land", "🌳 زمین"], water: ["zw", "🌊", "🌊 Water", "🌊 پانی"], hot: ["zh", "☀️", "🔥 Hot", "🔥 گرم"], cold: ["zc", "❄️", "❄️ Cold", "❄️ ٹھنڈا"] }[k]; return { k: k, c: d[0], h: '<div class="zd"><span>' + d[1] + '</span><span>' + d[1] + '</span><span>' + d[1] + '</span></div><span class="zl">' + T(d[2], d[3]) + '</span>' } }
+        function Z(k) { var d = { sky: ["zs", "☁️", "☁️ Sky", "☁️ آسمان"], land: ["zg", "🌳", "🌳 Land", "🌳 زمین"], water: ["zw", "🌊", "🌊 Water", "🌊 پانی"], hot: ["zh", "☀️", "🔥 Hot", "🔥 گرم"], cold: ["zc", "❄️", "❄️ Cold", "❄️ ٹھنڈا"] }[k]; return { k: k, c: d[0], h: '<div class="zd"><span>' + d[1] + '</span><span>' + d[1] + '</span><span>' + d[1] + '</span></div><span class="zl">' + T(d[2], d[3]).replace(/^\S+\s/, "") + '</span>' } }
         var G = [
-            { e: "🌍", t: ["Where do I live?", "میں کہاں رہتا ہوں؟"], s: ["Drag the animal home", "جانور کو اس کے گھر لے جاؤ"], c: "#2fb36b", d: "#6fd37f", th: "t-hab", make: function () { var a = draw("h", HAB); return { piece: '<span class="pe">' + a[0] + '</span>', ask: T("Where does the " + a[1] + " live?", a[2] + " کا گھر کہاں ہے؟"), ans: a[3], win: T("Yes! The " + a[1] + " lives " + WH[a[3]][0] + "!", "شاباش! " + a[2] + " کا گھر " + WH[a[3]][1] + " ہے!"), lay: "rows", zones: [Z("sky"), Z("land"), Z("water")] } } },
-            { e: "🔊", t: ["Who says that?", "یہ کس کی آواز ہے؟"], s: ["Drag the sound to the animal", "آواز کو جانور تک لے جاؤ"], c: "#ff8c42", d: "#ffb36b", th: "t-snd", make: function () { var a = draw("s", SND), o = pick([a].concat(pick(SND.filter(function (x) { return x !== a }), 2)), 3); return { piece: '<span class="pe">🔊</span><small>' + T(a[3], a[4]) + '!</small>', ask: T("Who makes this sound?", "یہ آواز کس کی ہے؟"), hear: a, ans: a[1], win: T("Yes! The " + a[1] + " says " + a[3] + "!", "شاباش! " + a[2] + " کہتا ہے: " + a[4] + "!"), lay: "cols n3", zones: o.map(function (x) { return { k: x[1], c: "za", h: '<span class="zan">' + x[0] + '</span><span class="zn">' + nm(x) + '</span>' } }) } } },
-            { e: "🌡️", t: ["Hot or cold?", "گرم یا ٹھنڈا؟"], s: ["Drag it to hot or cold", "اسے گرم یا ٹھنڈے میں لے جاؤ"], c: "#3b9cf0", d: "#74c0ff", th: "t-tmp", make: function () { var a = draw("t", TMP); return { piece: '<span class="pe">' + a[0] + '</span>', ask: T("Is the " + a[1] + " hot or cold?", "کیا " + a[2] + " گرم ہے یا ٹھنڈا؟"), ans: a[3], win: T("Yes! The " + a[1] + " is " + a[3] + "!", "شاباش! " + a[2] + " " + (a[3] == "hot" ? "گرم" : "ٹھنڈا") + " ہے!"), lay: "cols n2", zones: [Z("hot"), Z("cold")] } } }
+            { e: "🌍", t: ["Where do I live?", "میں کہاں رہتا ہوں؟"], s: ["Drag the animal home", "جانور کو اس کے گھر لے جاؤ"], c: "#2fb36b", d: "#6fd37f", th: "t-hab", make: function () { var a = draw("h", HAB); return { piece: AN(a, "pe"), ask: T("Where does the " + a[1] + " live?", a[2] + " کا گھر کہاں ہے؟"), ans: a[3], win: T("Yes! The " + a[1] + " lives " + WH[a[3]][0] + "!", "شاباش! " + a[2] + " کا گھر " + WH[a[3]][1] + " ہے!"), lay: "rows", zones: [Z("sky"), Z("land"), Z("water")] } } },
+            { e: "🔊", t: ["Who says that?", "یہ کس کی آواز ہے؟"], s: ["Drag the sound to the animal", "آواز کو جانور تک لے جاؤ"], c: "#ff8c42", d: "#ffb36b", th: "t-snd", make: function () { var a = draw("s", SND), o = pick([a].concat(pick(SND.filter(function (x) { return x !== a }), 2)), 3); return { piece: '<span class="pe">🔊</span><small>' + T(a[3], a[4]) + '!</small>', ask: T("Who makes this sound?", "یہ آواز کس کی ہے؟"), hear: a, ans: a[1], win: T("Yes! The " + a[1] + " says " + a[3] + "!", "شاباش! " + a[2] + " کہتا ہے: " + a[4] + "!"), lay: "cols n3", zones: o.map(function (x) { return { k: x[1], c: "za", h: AN(x, "zan") + '<span class="zn">' + nm(x) + '</span>' } }) } } },
+            { e: "🌡️", t: ["Hot or cold?", "گرم یا ٹھنڈا؟"], s: ["Drag it to hot or cold", "اسے گرم یا ٹھنڈے میں لے جاؤ"], c: "#3b9cf0", d: "#74c0ff", th: "t-tmp", make: function () { var a = draw("t", TMP); return { piece: AN(a, "pe"), ask: T("Is the " + a[1] + " hot or cold?", "کیا " + a[2] + " گرم ہے یا ٹھنڈا؟"), ans: a[3], win: T("Yes! The " + a[1] + " is " + a[3] + "!", "شاباش! " + a[2] + " " + (a[3] == "hot" ? "گرم" : "ٹھنڈا") + " ہے!"), lay: "cols n2", zones: [Z("hot"), Z("cold")] } } }
         ];
 
         function bindDrag(pc, zs, D, onDrop, onTap) {
@@ -1340,12 +2228,9 @@
             TK++; S = null; setLang(); document.body.className = (P.lang == "ur" ? "ur " : "") + "t-menu"; msg(T("Hi! Let’s play!", "سلام! آؤ کھیلیں!"));
             var h = '<div class="ttl">' + T("Pick a game!", "کھیل چنو!") + '</div><div class="tiles">';
             G.forEach(function (g, i) { h += '<button class="tile" style="--c:' + g.c + ';--c2x:' + g.d + '" data-g="' + i + '"><span class="te">' + g.e + '</span><span class="tx"><span class="tt">' + T(g.t[0], g.t[1]) + '</span><span class="ts">' + T(g.s[0], g.s[1]) + '</span></span><span class="go">▶</span></button>' });
-            h += '</div><div class="book"><b>' + T("My stickers", "میرے اسٹکرز") + '</b><span>' + (P.owned.length ? P.owned.slice(-10).join(" ") : T("Win games to collect them!", "کھیل جیت کر جمع کرو!")) + '</span></div>';
-            h += '<div class="opts"><button id="lg">🌐 ' + (P.lang == "ur" ? "English" : "اردو") + '</button><button id="mu" class="' + (P.mus ? "" : "off") + '">🎵 ' + T("Music", "موسیقی") + '</button></div>';
+            h += '</div>';
             $("view").innerHTML = h; hud();
             Array.prototype.forEach.call(document.querySelectorAll("[data-g]"), function (b) { b.onclick = function () { fx("ok"); start(+b.dataset.g) } });
-            $("lg").onclick = function () { P.lang = P.lang == "ur" ? "en" : "ur"; save(); menu() };
-            $("mu").onclick = function () { P.mus = P.mus ? 0 : 1; save(); music(); menu() };
         }
         function start(i) { S = { g: i, r: 0, wrong: 0, streak: 0 }; document.body.className = (P.lang == "ur" ? "ur " : "") + G[i].th; msg(T("Let’s go!", "چلو شروع کریں!")); next() }
         function next() {
@@ -1378,11 +2263,10 @@
             talk(q.ask); if (q.hear) setTimeout(function () { if (tk === TK) hear() }, 2200);
         }
         function end() {
-            TK++; var st = S.wrong === 0 ? 3 : S.wrong <= 2 ? 2 : 1, pool = STK.filter(function (x) { return P.owned.indexOf(x) < 0 }), s = pick(pool.length ? pool : STK, 1)[0];
-            if (P.owned.indexOf(s) < 0) P.owned.push(s); save();
+            TK++; var st = S.wrong === 0 ? 3 : S.wrong <= 2 ? 2 : 1; save();
             var tt = [["", "", ""], ["Nice try!", "اچھی کوشش!"], ["Well done!", "شاباش!"], ["Perfect!", "بہت خوب!"]][st], g = S.g;
-            var h = '<div class="endbox" id="eb"><div class="t">🏆</div><div class="ttl">' + T(tt[0], tt[1]) + '</div><div class="s3">' + new Array(st + 1).join("⭐") + '<span class="dim">' + new Array(4 - st).join("⭐") + '</span></div><div class="ask">' + T("New sticker:", "نیا اسٹکر:") + ' <span class="stk">' + s + '</span></div></div><div class="row2"><button id="again">🔁 ' + T("Play again", "دوبارہ کھیلو") + '</button><button id="menu2">🏠 ' + T("Menu", "مینو") + '</button></div>';
-            $("view").innerHTML = h; msg(T("You won a sticker! ", "تم نے اسٹکر جیتا! ") + s); fx("win"); burst($("eb"), ["🎉", "⭐", "✨", "🎊"]); mood("happy"); talk(T(tt[0], tt[1]));
+            var h = '<div class="endbox" id="eb"><div class="t">🏆</div><div class="ttl">' + T(tt[0], tt[1]) + '</div><div class="s3">' + new Array(st + 1).join("⭐") + '<span class="dim">' + new Array(4 - st).join("⭐") + '</span></div><div class="ask">' + T("Great game!", "بہت اچھا کھیل!") + '</div></div><div class="row2"><button id="again">🔁 ' + T("Play again", "دوبارہ کھیلو") + '</button><button id="menu2">🏠 ' + T("Menu", "مینو") + '</button></div>';
+            $("view").innerHTML = h; msg(T("Game complete! 🎉", "کھیل مکمل! 🎉")); fx("win"); burst($("eb"), ["🎉", "⭐", "✨", "🎊"]); mood("happy"); talk(T(tt[0], tt[1]));
             $("again").onclick = function () { start(g) }; $("menu2").onclick = menu;
         }
         $("home").onclick = menu;
